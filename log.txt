@@ -1,0 +1,66 @@
+[2026-03-21 19:51:47] ACTION: CREATE ENCOUNTER - Ubicaciï¿½n: Loca | Resultado: ï¿½Nuevo encuentro registrado correctamente!
+[2026-03-21 19:56:54] ACTION: ERROR SQL en createAttendant: Parameter index out of range (6 > number of parameters, which is 4).
+[2026-03-21 19:58:28] ACTION: ERROR SQL en createAttendant: Parameter index out of range (6 > number of parameters, which is 4).
+[2026-03-21 21:00:13] ACTION: ERROR SQL (createEvent): Check constraint 'evento_chk_2' is violated.
+[2026-03-21 21:26:51] ACTION: ERROR SQL (createEvent): Check constraint 'evento_chk_2' is violated.
+[2026-03-21 21:41:48] ACTION: ERROR SQL (createEvent): Check constraint 'evento_chk_2' is violated.
+[2026-03-21 21:43:39] ACTION: ERROR SQL (createEvent): Check constraint 'evento_chk_2' is violated.
+[2026-03-21 21:53:07] ACTION: DELETE ENCOUNTER - Cï¿½digo: 4 | Encuentro #4 eliminado.
+[2026-03-21 21:55:09] ACTION: CREATE EVENT - Tï¿½tulo: Moronga | Error SQL al insertar: Check constraint 'evento_chk_2' is violated.
+[2026-03-21 21:57:15] ACTION: CREATE EVENT - Tï¿½tulo: Moronga  | Evento 'Moronga ' creado con ï¿½xito.
+[2026-03-21 22:28:39] ACTION: FATAL ERROR - Inicializaciï¿½n fallida: Column 'NOMBRE' not found.
+[2026-03-21 22:29:07] ACTION: FATAL ERROR - Inicializaciï¿½n fallida: Column 'NOMBRE' not found.
+[2026-03-21 22:31:14] ACTION: FATAL ERROR - Inicializaciï¿½n fallida: Column 'NOMBRE' not found.
+[2026-03-21 22:40:59] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 22:45:29] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 22:46:20] ACTION: CREATE EVENTO - Tï¿½tulo: o | Evento 'o' creado con ï¿½xito.
+[2026-03-21 23:08:36] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 23:13:52] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 23:15:34] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 23:18:02] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 23:23:05] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 23:49:20] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-21 23:52:14] ACTION: CREATE ASISTENTE - DNI: 55555555C | ï¿½Usuario 'Jordi' creado con ï¿½xito!
+[2026-03-21 23:55:19] ACTION: UPDATE ASISTENTE - DNI: 77777777G | Datos de 'Urkijo' actualizados correctamente.
+[2026-03-21 23:56:39] ACTION: DELETE ASISTENTE - DNI: 77777777g | El usuario con DNI: '77777777g' se ha eliminado correctamente.
+[2026-03-21 23:57:11] ACTION: CREATE ENCUENTRO - Ubicaciï¿½n: Polonia | Encuentro creado correctamente.
+[2026-03-21 23:58:23] ACTION: UPDATE ENCUENTRO - Cï¿½digo: 3 | Encuentro actualizado.
+[2026-03-22 00:00:09] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 00:00:54] ACTION: DELETE ENCUENTRO - Cï¿½digo: 1 | Encuentro eliminado.
+[2026-03-22 00:02:37] ACTION: CREATE EVENTO - Tï¿½tulo: Omega | Evento 'Omega' creado con ï¿½xito.
+[2026-03-22 00:04:44] ACTION: UPDATE EVENTO - ID: 15 | Evento actualizado con ï¿½xito.
+[2026-03-22 00:05:02] ACTION: DELETE EVENTO - ID: 15 | Evento eliminado.
+[2026-03-22 00:05:28] ACTION: ERROR SQL (createGuest): Check constraint 'invitados_chk_1' is violated.
+[2026-03-22 00:05:52] ACTION: ERROR SQL (createGuest): Check constraint 'invitados_chk_1' is violated.
+[2026-03-22 00:06:38] ACTION: ERROR SQL (createGuest): Check constraint 'invitados_chk_1' is violated.
+[2026-03-22 00:09:52] ACTION: UPDATE INVITADO - Usuario: inv3 | Datos de 'inv3' actualizados correctamente.
+[2026-03-22 00:10:19] ACTION: DELETE INVITADO - Usuario: inv4 | Invitado 'inv4' eliminado correctamente.
+[2026-03-22 20:58:39] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:06:52] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:07:39] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:08:14] ACTION: CREATE USUARIO - DNI: 34363436Z | ï¿½Usuario 'Joseph' creado con ï¿½xito!
+[2026-03-22 21:10:05] ACTION: CREATE INVITADO - Usuario: Valentin | ï¿½Invitado 'Valentin' creado con ï¿½xito!
+[2026-03-22 21:12:05] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:14:42] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:16:07] ACTION: CREATE EVENTO - Tï¿½tulo: Io | Evento 'Io' creado con ï¿½xito.
+[2026-03-22 21:16:31] ACTION: DELETE EVENTO - ID: 16 | Evento eliminado.
+[2026-03-22 21:18:14] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:21:02] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:22:55] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:26:25] ACTION: UPDATE ENCUENTRO - Cï¿½digo: 2 | Encuentro actualizado.
+[2026-03-22 21:37:27] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:38:17] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-22 21:42:19] ACTION: UPDATE INVITADO - Usuario: valentin | Datos de 'valentin' actualizados correctamente.
+[2026-03-23 08:06:20] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-24 10:24:05] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-24 10:24:05] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-26 09:00:45] ACTION: SISTEMA - Managers instanciados y listos.
+[2026-03-26 09:49:00] ACTION: SISTEMA - Gestores instanciados y listos.
+[2026-03-26 09:49:17] ACTION: BUSCAR INVITADO - Usuario: Abel
+[2026-03-26 09:49:36] ACTION: BUSCAR INVITADO - Usuario: Valentin
+[2026-03-26 10:03:16] ACCIÓN: SISTEMA - Gestores instanciados y listos.
+[2026-03-26 10:04:27] ACCIÓN: SISTEMA - Gestores instanciados y listos.
+[2026-03-26 10:04:44] ACCIÓN: SISTEMA - Gestores instanciados y listos.
+[2026-03-26 10:05:03] ACCIÓN: SISTEMA - Gestores instanciados y listos.
+[2026-03-26 10:05:36] ACCIÓN: SISTEMA - Gestores instanciados y listos.
+[2026-03-26 10:07:21] ACCIÓN: SISTEMA - Gestores instanciados y listos.
