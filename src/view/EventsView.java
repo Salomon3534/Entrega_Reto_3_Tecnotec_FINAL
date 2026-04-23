@@ -21,59 +21,44 @@ import model.Event;
 
 import java.awt.Font;
 
-public class events extends JFrame {
+public class EventsView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					events frame = new events();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public events() {
+	public EventsView() {
 		setSize(new Dimension(640, 480));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 30));
+		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JPanel header = new JPanel();
+		header.setBackground(new Color(53, 132, 228));
 		header.setPreferredSize(new Dimension(9, 50));
 		contentPane.add(header, BorderLayout.NORTH);
-		header.setLayout(new BorderLayout(0, 15));
 		header.setBorder(new EmptyBorder(10, 0, 0, 10));
+		FlowLayout fl_header = new FlowLayout(FlowLayout.LEFT, 5, 5);
+		header.setLayout(fl_header);
+
+		JButton closeButton = new JButton("\u2190");
+		closeButton.setOpaque(false);
+		closeButton.setForeground(new Color(0, 0, 0));
+		closeButton.setFont(new Font("Dialog", Font.BOLD, 20));
+		closeButton.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		closeButton.setBackground(new Color(0, 0, 0));
+		closeButton.setPreferredSize(new Dimension(75, 30));
+		header.add(closeButton);
 
 		JLabel eventTitle = new JLabel("Eventos");
+		eventTitle.setBackground(new Color(0, 0, 0));
 		eventTitle.setFont(new Font("FreeMono", Font.BOLD, 30));
 		eventTitle.setHorizontalTextPosition(SwingConstants.CENTER);
 		eventTitle.setHorizontalAlignment(SwingConstants.TRAILING);
-		eventTitle.setPreferredSize(new Dimension(300, 15));
-		header.add(eventTitle, BorderLayout.WEST);
-
-		JButton closeButton = new JButton("X");
-		closeButton.setForeground(new Color(255, 255, 255));
-		closeButton.setFont(new Font("Dialog", Font.BOLD, 20));
-		closeButton.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		closeButton.setBackground(new Color(224, 27, 36));
-		closeButton.setPreferredSize(new Dimension(50, 50));
-		header.add(closeButton, BorderLayout.EAST);
+		eventTitle.setPreferredSize(new Dimension(400, 30));
+		header.add(eventTitle);
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setSize(new Dimension(500, 400));
