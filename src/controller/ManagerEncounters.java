@@ -1,8 +1,9 @@
-package util;
+package controller;
 
 import java.sql.*;
+
+import dao.DatabaseConnector;
 import model.Encounter;
-import db.DatabaseConnector;
 
 public class ManagerEncounters {
 

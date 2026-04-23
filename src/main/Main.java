@@ -1,23 +1,24 @@
- package app;
+ package main;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import db.DatabaseConnector;
-import util.TotalManagerEuskalEncounter;
+
+import controller.TotalManagerEuskalEncounter;
+import dao.DatabaseConnector;
 import view.ViewEuskalEncounter;
 
 public class Main {
 
 	public static void main(String[] args) {
 		try {
-			// Intentamos obtener la conexión
+			// Intentamos obtener la conexiï¿½n
 			Connection connection = DatabaseConnector.getConexion();
 
-			// Verificamos si la conexión es nula o no es válida (la BD no existe o no es
+			// Verificamos si la conexiï¿½n es nula o no es vï¿½lida (la BD no existe o no es
 			// accesible)
 			if (connection == null || connection.isClosed()) {
 				throw new SQLException(
-						"No se pudo establecer comunicación con el servidor SQL. Verifique que la base de datos existe.");
+						"No se pudo establecer comunicaciï¿½n con el servidor SQL. Verifique que la base de datos existe.");
 			}
 
 			TotalManagerEuskalEncounter managerTotal = new TotalManagerEuskalEncounter();
@@ -32,7 +33,7 @@ public class Main {
 		} catch (SQLException e) {
 			System.err.println("\n[ERROR DE BASE DE DATOS]");
 			System.err
-					.println("No se puede iniciar la aplicación porque la base de datos SQL no existe o no responde.");
+					.println("No se puede iniciar la aplicaciï¿½n porque la base de datos SQL no existe o no responde.");
 			System.err.println("Detalles: " + e.getMessage());
 		} catch (Exception e) {
 			System.err.println("\n[ERROR INESPERADO]");

@@ -1,10 +1,11 @@
-package util;
+package controller;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import db.DatabaseConnector;
+
+import dao.DatabaseConnector;
 import model.Guest;
 
 public class ManagerGuests {
@@ -24,7 +25,7 @@ public class ManagerGuests {
 				return g.toString();
 			}
 		}
-		return "No se encontró ningún invitado con el nombre de usuario: " + username;
+		return "No se encontrï¿½ ningï¿½n invitado con el nombre de usuario: " + username;
 	}
 
 	public void loadGuests() throws SQLException {
@@ -57,7 +58,7 @@ public class ManagerGuests {
 			ps.executeUpdate();
 		}
 		loadGuests();
-		return "¡Invitado '" + username + "' creado con éxito!";
+		return "ï¿½Invitado '" + username + "' creado con ï¿½xito!";
 	}
 
 	public String listGuests() {
@@ -99,6 +100,6 @@ public class ManagerGuests {
 				return "Invitado '" + username + "' eliminado correctamente.";
 			}
 		}
-		return "Error: No se encontró al usuario '" + username + "'.";
+		return "Error: No se encontrï¿½ al usuario '" + username + "'.";
 	}
 }

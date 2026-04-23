@@ -1,10 +1,11 @@
-package util;
+package controller;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import db.DatabaseConnector;
+
+import dao.DatabaseConnector;
 import model.User;
 
 public class ManagerUsers {
@@ -24,7 +25,7 @@ public class ManagerUsers {
 				return u.toString();
 			}
 		}
-		return "No se encontró ningún usuario con el DNI: " + dni;
+		return "No se encontrï¿½ ningï¿½n usuario con el DNI: " + dni;
 	}
 
 	public void loadUsers() throws SQLException {
@@ -49,7 +50,7 @@ public class ManagerUsers {
 			ps.executeUpdate();
 		}
 		loadUsers();
-		return "¡Usuario '" + name + "' creado con éxito!";
+		return "ï¿½Usuario '" + name + "' creado con ï¿½xito!";
 	}
 
 	public String listUsers() {
@@ -85,6 +86,6 @@ public class ManagerUsers {
 				return "El usuario con DNI: '" + dni + "' se ha eliminado correctamente.";
 			}
 		}
-		return "Error: No se encontró al usuario con el dni '" + dni + "'.";
+		return "Error: No se encontrï¿½ al usuario con el dni '" + dni + "'.";
 	}
 }

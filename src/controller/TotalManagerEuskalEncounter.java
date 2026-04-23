@@ -1,4 +1,4 @@
-package util;
+package controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -26,7 +26,7 @@ public class TotalManagerEuskalEncounter {
 	public String createEncounter(String location, Date dateStart, Date dateEnd) throws IOException {
 		try {
 			String result = managerEncounters.createEncounter(location, dateStart, dateEnd);
-			logger.writeLog("CREAR ENCUENTRO - Ubicación: " + location + " | " + result);
+			logger.writeLog("CREAR ENCUENTRO - Ubicaciï¿½n: " + location + " | " + result);
 			return result;
 		} catch (SQLException e) {
 			logger.writeLog("ERROR SQL (createEncounter): " + e.getMessage());
@@ -40,14 +40,14 @@ public class TotalManagerEuskalEncounter {
 
 	public String getEncounterById(int code) throws IOException {
 		String result = managerEncounters.getEncounterById(code);
-		logger.writeLog("BUSCAR ENCUENTRO - Código: " + code);
+		logger.writeLog("BUSCAR ENCUENTRO - Cï¿½digo: " + code);
 		return result;
 	}
 
 	public String updateEncounter(Encounter encounter) throws IOException {
 		try {
 			String result = managerEncounters.updateEncounter(encounter);
-			logger.writeLog("ACTUALIZAR ENCUENTRO - Código: " + encounter.getCode() + " | " + result);
+			logger.writeLog("ACTUALIZAR ENCUENTRO - Cï¿½digo: " + encounter.getCode() + " | " + result);
 			return result;
 		} catch (SQLException ex) {
 			logger.writeLog("ERROR SQL (updateEncounter): " + ex.getMessage());
@@ -58,7 +58,7 @@ public class TotalManagerEuskalEncounter {
 	public String deleteEncounter(int code) throws IOException {
 		try {
 			String result = managerEncounters.deleteEncounter(code);
-			logger.writeLog("ELIMINAR ENCUENTRO - Código: " + code + " | " + result);
+			logger.writeLog("ELIMINAR ENCUENTRO - Cï¿½digo: " + code + " | " + result);
 			return result;
 		} catch (SQLException e) {
 			logger.writeLog("ERROR SQL (deleteEncounter): " + e.getMessage());
@@ -78,7 +78,7 @@ public class TotalManagerEuskalEncounter {
 	public String createEvent(Event event) throws IOException {
 		try {
 			String result = managerEvents.createEvent(event);
-			logger.writeLog("CREAR EVENTO - Título: " + event.getTitle() + " | " + result);
+			logger.writeLog("CREAR EVENTO - Tï¿½tulo: " + event.getTitle() + " | " + result);
 			return result;
 		} catch (SQLException ex) {
 			logger.writeLog("ERROR SQL (createEvent): " + ex.getMessage());

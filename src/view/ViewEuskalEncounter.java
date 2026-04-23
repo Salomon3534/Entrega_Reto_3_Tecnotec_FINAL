@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.Scanner;
 import model.*;
-import util.TotalManagerEuskalEncounter;
+import controller.TotalManagerEuskalEncounter;
 
 public class ViewEuskalEncounter {
 
@@ -16,7 +16,7 @@ public class ViewEuskalEncounter {
 		this.totalManager = totalManagerEuskalEncounter;
 	}
 
-	// Métodos privados de validación
+	// Mï¿½todos privados de validaciï¿½n
 
 	private int readInt(int min, int max) {
 		while (true) {
@@ -27,7 +27,7 @@ public class ViewEuskalEncounter {
 				}
 				return numero;
 			} catch (Exception e) {
-				System.out.println("Error: " + e.getMessage() + ". Inténtalo de nuevo:");
+				System.out.println("Error: " + e.getMessage() + ". Intï¿½ntalo de nuevo:");
 			}
 		}
 	}
@@ -38,10 +38,10 @@ public class ViewEuskalEncounter {
 				System.out.print(message);
 				String texto = sc.nextLine();
 				if (texto.trim().isEmpty())
-					throw new Exception("La entrada no puede estar vacía.");
+					throw new Exception("La entrada no puede estar vacï¿½a.");
 				if (texto.length() > maxLength)
-					throw new Exception("Longitud máxima: " + maxLength);
-				if (!texto.matches("[a-zA-ZñÑáéíóúÁÉÍÓÚ 0-9\\- .:,;]+"))
+					throw new Exception("Longitud mï¿½xima: " + maxLength);
+				if (!texto.matches("[a-zA-Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0-9\\- .:,;]+"))
 					throw new Exception("Caracteres no permitidos.");
 				return texto;
 			} catch (Exception e) {
@@ -56,7 +56,7 @@ public class ViewEuskalEncounter {
 				System.out.print(message + " (ejemplo: usuario@dominio.com): ");
 				String texto = sc.nextLine();
 				if (!texto.matches("^[\\w.-]+@([\\w-]+\\.)+[a-zA-Z]{2,}$"))
-					throw new Exception("Email inválido.");
+					throw new Exception("Email invï¿½lido.");
 				return texto;
 			} catch (Exception e) {
 				System.out.println("Error: " + e.getMessage() + ". Reintenta:");
@@ -67,7 +67,7 @@ public class ViewEuskalEncounter {
 	private String readDni() {
 		while (true) {
 			try {
-				System.out.print("DNI (8 números + 1 letra): ");
+				System.out.print("DNI (8 nï¿½meros + 1 letra): ");
 				String dni = sc.nextLine();
 				if (!dni.matches("^[0-9]{8}[A-Za-z]$"))
 					throw new Exception("Formato DNI incorrecto.");
@@ -78,16 +78,16 @@ public class ViewEuskalEncounter {
 		}
 	}
 
-	// Menús principales
+	// Menï¿½s principales
 
 	public void mainMenu() {
 		int choice;
 		do {
 			System.out.println("\n========================================");
-			System.out.println(" SISTEMA DE GESTIÓN DE EUSKAL ENCOUNTER");
+			System.out.println(" SISTEMA DE GESTIï¿½N DE EUSKAL ENCOUNTER");
 			System.out.println("========================================");
 			System.out.println("1. Acceso Usuario (Modo Consulta)");
-			System.out.println("2. Acceso Administrador (Modo Edición)");
+			System.out.println("2. Acceso Administrador (Modo Ediciï¿½n)");
 			System.out.println("0. Salir");
 			choice = readInt(0, 2);
 			if (choice == 1)
@@ -143,27 +143,27 @@ public class ViewEuskalEncounter {
 	}
 
 	/**
-	 * Muestra el menú de acciones. Permite definir si se incluye la opción de ID
+	 * Muestra el menï¿½ de acciones. Permite definir si se incluye la opciï¿½n de ID
 	 * Global.
 	 */
 	private int showActionMenu(String title, boolean showExtended) {
-		System.out.println("\n>> GESTIÓN DE " + title.toUpperCase());
+		System.out.println("\n>> GESTIï¿½N DE " + title.toUpperCase());
 		System.out.println("1. Crear");
 		System.out.println("2. Listar todos");
 		System.out.println("3. Actualizar");
 		System.out.println("4. Eliminar");
 		System.out.println("5. Buscar por identificador");
 		if (showExtended) {
-			System.out.println("6. Ver próximo ID disponible");
-			System.out.print("Acción (0-6): ");
+			System.out.println("6. Ver prï¿½ximo ID disponible");
+			System.out.print("Acciï¿½n (0-6): ");
 			return readInt(0, 6);
 		} else {
-			System.out.print("Acción (0-5): ");
+			System.out.print("Acciï¿½n (0-5): ");
 			return readInt(0, 5);
 		}
 	}
 
-	// Gestión de entidades
+	// Gestiï¿½n de entidades
 
 	private void manageEvents() {
 		int action;
@@ -188,7 +188,7 @@ public class ViewEuskalEncounter {
 				}
 				case 4 -> System.out.println(totalManager.deleteEvent(readInt(1, 99999)));
 				case 5 -> System.out.println(totalManager.getEventById(readInt(1, 99999)));
-				case 6 -> System.out.println("Próximo ID Evento: " + totalManager.getGlobalCounterEvent());
+				case 6 -> System.out.println("Prï¿½ximo ID Evento: " + totalManager.getGlobalCounterEvent());
 				}
 			} catch (Exception e) {
 				System.err.println("Error: " + e.getMessage());
@@ -205,7 +205,7 @@ public class ViewEuskalEncounter {
 			try {
 				switch (action) {
 				case 1 -> {
-					String loc = readString("Ubicación: ", 150);
+					String loc = readString("Ubicaciï¿½n: ", 150);
 					Date start = Date.valueOf(readString("Inicio (YYYY-MM-DD): ", 10));
 					Date end = Date.valueOf(readString("Fin (YYYY-MM-DD): ", 10));
 					System.out.println(totalManager.createEncounter(loc, start, end));
@@ -213,14 +213,14 @@ public class ViewEuskalEncounter {
 				case 2 -> System.out.println(totalManager.listEncounters());
 				case 3 -> {
 					int id = readInt(1, 9999);
-					String loc = readString("Nueva Ubicación: ", 150);
+					String loc = readString("Nueva Ubicaciï¿½n: ", 150);
 					Date dS = Date.valueOf(readString("Nuevo Inicio (YYYY-MM-DD): ", 10));
 					Date dE = Date.valueOf(readString("Nuevo Fin (YYYY-MM-DD): ", 10));
 					System.out.println(totalManager.updateEncounter(new Encounter(id, loc, dS, dE)));
 				}
 				case 4 -> System.out.println(totalManager.deleteEncounter(readInt(1, 99999)));
 				case 5 -> System.out.println(totalManager.getEncounterById(readInt(1, 99999)));
-				case 6 -> System.out.println("Próximo ID Encuentro: " + totalManager.getGlobalCounterEncounter());
+				case 6 -> System.out.println("Prï¿½ximo ID Encuentro: " + totalManager.getGlobalCounterEncounter());
 				}
 			} catch (Exception e) {
 				System.err.println("Error: " + e.getMessage());
@@ -231,17 +231,17 @@ public class ViewEuskalEncounter {
 	private void manageGuests() {
 		int action;
 		do {
-			action = showActionMenu("Invitados", false); // Opción 6 desactivada
+			action = showActionMenu("Invitados", false); // Opciï¿½n 6 desactivada
 			if (action == 0)
 				break;
 			try {
 				switch (action) {
 				case 1 -> System.out.println(totalManager.createGuest(readString("Usuario: ", 50),
-						readString("Nombre: ", 100), readString("Apellidos: ", 150), readString("Teléfono: ", 15),
+						readString("Nombre: ", 100), readString("Apellidos: ", 150), readString("Telï¿½fono: ", 15),
 						readString("Carrera: ", 200), readEmail("Email", 150), readString("Pass: ", 255)));
 				case 2 -> System.out.println(totalManager.listGuests());
 				case 3 -> System.out.println(totalManager.updateGuest(new Guest(readString("Usuario: ", 50),
-						readString("Nombre: ", 100), readString("Apellidos: ", 150), readString("Teléfono: ", 15),
+						readString("Nombre: ", 100), readString("Apellidos: ", 150), readString("Telï¿½fono: ", 15),
 						readString("Carrera: ", 200), readEmail("Email", 150), readString("Pass: ", 255))));
 				case 4 -> System.out.println(totalManager.deleteGuest(readString("Usuario a borrar: ", 50)));
 				case 5 -> System.out.println(totalManager.getGuestByUsername(readString("Usuario: ", 50)));
@@ -255,7 +255,7 @@ public class ViewEuskalEncounter {
 	private void manageUsers() {
 		int action;
 		do {
-			action = showActionMenu("Usuarios", false); // Opción 6 desactivada
+			action = showActionMenu("Usuarios", false); // Opciï¿½n 6 desactivada
 			if (action == 0)
 				break;
 			try {
@@ -275,9 +275,9 @@ public class ViewEuskalEncounter {
 	}
 
 	private Event requestEventData(int id, int typeChoice) {
-		String title = readString("Título: ", 100);
-		String loc = readString("Ubicación: ", 150);
-		String desc = readString("Descripción: ", 255);
+		String title = readString("Tï¿½tulo: ", 100);
+		String loc = readString("Ubicaciï¿½n: ", 150);
+		String desc = readString("Descripciï¿½n: ", 255);
 		Date dS = Date.valueOf(readString("Fecha Inicio (YYYY-MM-DD): ", 10));
 		Date dE = Date.valueOf(readString("Fecha Fin (YYYY-MM-DD): ", 10));
 		Time hS = Time.valueOf(readString("Hora Inicio (HH:MM:SS): ", 8));

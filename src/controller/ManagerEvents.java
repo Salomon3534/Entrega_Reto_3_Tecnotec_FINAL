@@ -1,8 +1,9 @@
-package util;
+package controller;
 
 import java.sql.*;
 import java.util.ArrayList;
-import db.DatabaseConnector;
+
+import dao.DatabaseConnector;
 import model.*;
 
 public class ManagerEvents {
@@ -21,7 +22,7 @@ public class ManagerEvents {
 				return e.toString();
 			}
 		}
-		return "No se encontró ningún evento con el identificador: " + id;
+		return "No se encontrï¿½ ningï¿½n evento con el identificador: " + id;
 	}
 
 	/*
@@ -99,7 +100,7 @@ public class ManagerEvents {
 
 				con.commit();
 				loadEvents();
-				return "Evento '" + e.getTitle() + "' creado con éxito.";
+				return "Evento '" + e.getTitle() + "' creado con ï¿½xito.";
 
 			} catch (SQLException ex) {
 				con.rollback();
@@ -108,7 +109,7 @@ public class ManagerEvents {
 				con.setAutoCommit(true);
 			}
 		} catch (SQLException ex) {
-			return "Error de conexión: " + ex.getMessage();
+			return "Error de conexiï¿½n: " + ex.getMessage();
 		}
 	}
 
@@ -168,7 +169,7 @@ public class ManagerEvents {
 					updateSubtype(con, e);
 					con.commit();
 					loadEvents();
-					return "Evento actualizado con éxito.";
+					return "Evento actualizado con ï¿½xito.";
 				}
 			} catch (SQLException ex) {
 				con.rollback();
@@ -179,7 +180,7 @@ public class ManagerEvents {
 		} catch (SQLException ex) {
 			return "Error de base de datos: " + ex.getMessage();
 		}
-		return "No se encontró el evento.";
+		return "No se encontrï¿½ el evento.";
 	}
 
 	private void updateSubtype(Connection con, Event e) throws SQLException {

@@ -1,4 +1,4 @@
-package util;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,7 +16,7 @@ public class Logger {
 	public void writeLog(String action) throws IOException {
 		BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true));
 		String timestamp = LocalDateTime.now().format(formatter);
-		writer.write("[" + timestamp + "] ACCIÓN: " + action);
+		writer.write("[" + timestamp + "] ACCIï¿½N: " + action);
 		writer.newLine();
 	}
 
