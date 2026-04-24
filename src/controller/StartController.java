@@ -18,7 +18,7 @@ public class StartController {
 		ViewEvents ve = new ViewEvents();
 		EventController ec = new EventController(ve);
 
-		ec.showEvents();;
+		ec.showEvents();
 		this.vista.dispose();
 	}
 

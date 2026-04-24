@@ -110,7 +110,7 @@ public class Event {
 				+ "**************************************************\n" + " > ID EVENTO:    " + id + "\n"
 				+ " > LUGAR:        " + location + "\n" + " > FECHAS:       " + dateStart + " al " + dateEnd + "\n"
 				+ " > HORARIO:      " + hourStart + " - " + hourEnd + "\n" + " > ENCUENTRO:    " + encounterCode + "\n"
-				+ " > DESCRIPCIÓN:  " + description + "\n" + "**************************************************";
+				+ " > DESCRIPCIï¿½N:  " + description + "\n" + "**************************************************";
 	}
 
 	@Override
@@ -120,10 +120,12 @@ public class Event {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null || getClass() != obj.getClass())
+		}
+		if (obj == null || getClass() != obj.getClass()) {
 			return false;
+		}
 		Event other = (Event) obj;
 		return id == other.id;
 	}

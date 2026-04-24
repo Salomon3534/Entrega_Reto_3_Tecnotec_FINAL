@@ -62,11 +62,13 @@ public class ManagerGuests {
 	}
 
 	public String listGuests() {
-		if (guestList.isEmpty())
+		if (guestList.isEmpty()) {
 			return "No hay invitados registrados.";
+		}
 		StringBuilder sb = new StringBuilder();
-		for (Guest g : guestList)
+		for (Guest g : guestList) {
 			sb.append(g.toString());
+		}
 		return sb.toString();
 	}
 

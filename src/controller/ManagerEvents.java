@@ -1,10 +1,20 @@
 package controller;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import dao.DatabaseConnector;
-import model.*;
+import model.Event;
+import model.KeynoteSpeech;
+import model.PracticalWorkshop;
+import model.ProjectPresentation;
+import model.RoundTable;
 
 public class ManagerEvents {
 
@@ -217,11 +227,13 @@ public class ManagerEvents {
 	}
 
 	public String listEvents() {
-		if (eventList.isEmpty())
+		if (eventList.isEmpty()) {
 			return "No hay eventos registrados.";
+		}
 		StringBuilder sb = new StringBuilder();
-		for (Event e : eventList)
+		for (Event e : eventList) {
 			sb.append(e.toString()).append("\n");
+		}
 		return sb.toString();
 	}
 

@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 public class ViewStart extends JFrame {
 
@@ -28,6 +30,7 @@ public class ViewStart extends JFrame {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					ViewStart frame = new ViewStart();
@@ -47,7 +50,7 @@ public class ViewStart extends JFrame {
 		setTitle("Euskal Encounter (Menu de usuario)");
 		setResizable(false);
 		setBounds(100, 100, 460, 310);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		URL iconUrl = ViewStart.class.getResource("/assets/img_ee_icon.png");

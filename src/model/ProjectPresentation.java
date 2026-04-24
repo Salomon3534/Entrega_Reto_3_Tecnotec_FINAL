@@ -37,7 +37,7 @@ public class ProjectPresentation extends Event {
 
 	@Override
 	public String toString() {
-		return "\n**************************************************\n" + "      PRESENTACIÓN PROYECTO: "
+		return "\n**************************************************\n" + "      PRESENTACIï¿½N PROYECTO: "
 				+ (getTitle() != null ? getTitle().toUpperCase() : "N/A") + "\n"
 				+ "**************************************************\n" + " > ID EVENTO:      " + getId() + "\n"
 				+ " > TIPO PROYECTO:  " + projectType + "\n" + " > DESC. PROYECTO: " + projectDescription + "\n"
@@ -54,12 +54,12 @@ public class ProjectPresentation extends Event {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null || getClass() != obj.getClass())
+		}
+		if (obj == null || getClass() != obj.getClass() || !super.equals(obj)) {
 			return false;
-		if (!super.equals(obj))
-			return false;
+		}
 		ProjectPresentation other = (ProjectPresentation) obj;
 		return Objects.equals(projectType, other.projectType)
 				&& Objects.equals(projectDescription, other.projectDescription);

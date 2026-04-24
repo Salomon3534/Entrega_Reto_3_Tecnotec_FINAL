@@ -55,7 +55,7 @@ public class User {
 	public String toString() {
 		return "\n" + "**************************************************\n" + "         FICHA DE USUARIO: "
 				+ (dni != null ? dni.toUpperCase() : "N/A") + "\n"
-				+ "**************************************************\n" 
+				+ "**************************************************\n"
 				+ " > DNI:       " + dni + "\n" + " > NOMBRE:    " + name + " " + surname + "\n" + " > EMAIL:     "
 				+ email + "\n" + "**************************************************";
 	}
@@ -67,12 +67,12 @@ public class User {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if ((obj == null) || (getClass() != obj.getClass())) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		User other = (User) obj;
 		return Objects.equals(dni, other.dni);
 	}

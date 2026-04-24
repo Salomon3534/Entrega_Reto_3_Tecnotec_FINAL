@@ -33,7 +33,7 @@ public class KeynoteSpeech extends Event {
 				+ " > TIPO:        " + speechType + "\n" + " > LUGAR:       " + getLocation() + "\n"
 				+ " > FECHA:       " + getDateStart() + " al " + getDateEnd() + "\n" + " > HORARIO:     "
 				+ getHourStart() + " - " + getHourEnd() + "\n" + " > ENCUENTRO:   " + getEncounterCode() + "\n"
-				+ " > DESCRIPCIÓN: " + getDescription() + "\n" + "**************************************************";
+				+ " > DESCRIPCIï¿½N: " + getDescription() + "\n" + "**************************************************";
 	}
 
 	@Override
@@ -43,12 +43,12 @@ public class KeynoteSpeech extends Event {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null || getClass() != obj.getClass())
+		}
+		if (obj == null || getClass() != obj.getClass() || !super.equals(obj)) {
 			return false;
-		if (!super.equals(obj))
-			return false;
+		}
 		KeynoteSpeech other = (KeynoteSpeech) obj;
 		return Objects.equals(speechType, other.speechType);
 	}

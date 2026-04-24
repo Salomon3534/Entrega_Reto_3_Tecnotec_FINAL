@@ -54,11 +54,13 @@ public class ManagerUsers {
 	}
 
 	public String listUsers() {
-		if (usersList.isEmpty())
+		if (usersList.isEmpty()) {
 			return "No hay usuarios registrados.";
+		}
 		StringBuilder sb = new StringBuilder();
-		for (User u : usersList)
+		for (User u : usersList) {
 			sb.append(u.toString()).append("\n");
+		}
 		return sb.toString();
 	}
 

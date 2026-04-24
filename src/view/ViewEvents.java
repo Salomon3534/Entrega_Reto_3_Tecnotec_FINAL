@@ -3,8 +3,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,8 +18,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import model.Event;
-
-import java.awt.Font;
 
 public class ViewEvents extends JFrame {
 
@@ -70,7 +68,7 @@ public class ViewEvents extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		mainPanel.add(scrollPane);
 
-		JList<Event> eventList = new JList<Event>();
+		JList<Event> eventList = new JList<>();
 		eventList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		eventList.setPreferredSize(new Dimension(250, 300));
 		mainPanel.add(eventList);

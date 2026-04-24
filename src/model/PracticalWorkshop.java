@@ -27,13 +27,13 @@ public class PracticalWorkshop extends Event {
 
 	@Override
 	public String toString() {
-		return "\n**************************************************\n" + "          TALLER PRÁCTICO: "
+		return "\n**************************************************\n" + "          TALLER PRï¿½CTICO: "
 				+ (getTitle() != null ? getTitle().toUpperCase() : "N/A") + "\n"
 				+ "**************************************************\n" + " > ID EVENTO:      " + getId() + "\n"
-				+ " > NÚMERO TALLER:  " + workshopNumber + "\n" + " > LUGAR:          " + getLocation() + "\n"
+				+ " > Nï¿½MERO TALLER:  " + workshopNumber + "\n" + " > LUGAR:          " + getLocation() + "\n"
 				+ " > FECHA:          " + getDateStart() + " al " + getDateEnd() + "\n" + " > HORARIO:        "
 				+ getHourStart() + " - " + getHourEnd() + "\n" + " > ENCUENTRO:      " + getEncounterCode() + "\n"
-				+ " > DESCRIPCIÓN:    " + getDescription() + "\n"
+				+ " > DESCRIPCIï¿½N:    " + getDescription() + "\n"
 				+ "**************************************************";
 	}
 
@@ -44,12 +44,12 @@ public class PracticalWorkshop extends Event {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null || getClass() != obj.getClass())
+		}
+		if (obj == null || getClass() != obj.getClass() || !super.equals(obj)) {
 			return false;
-		if (!super.equals(obj))
-			return false;
+		}
 		PracticalWorkshop other = (PracticalWorkshop) obj;
 		return workshopNumber == other.workshopNumber;
 	}

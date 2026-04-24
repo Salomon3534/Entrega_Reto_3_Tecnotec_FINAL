@@ -31,10 +31,10 @@ public class RoundTable extends Event {
 		return "\n**************************************************\n" + "             MESA REDONDA: "
 				+ (getTitle() != null ? getTitle().toUpperCase() : "N/A") + "\n"
 				+ "**************************************************\n" + " > ID EVENTO:      " + getId() + "\n"
-				+ " > NÚM. CONF:      " + conferenceNumber + "\n" + " > LUGAR:          " + getLocation() + "\n"
+				+ " > Nï¿½M. CONF:      " + conferenceNumber + "\n" + " > LUGAR:          " + getLocation() + "\n"
 				+ " > FECHA:          " + getDateStart() + " al " + getDateEnd() + "\n" + " > HORARIO:        "
 				+ getHourStart() + " - " + getHourEnd() + "\n" + " > ENCUENTRO:      " + getEncounterCode() + "\n"
-				+ " > DESCRIPCIÓN:    " + getDescription() + "\n"
+				+ " > DESCRIPCIï¿½N:    " + getDescription() + "\n"
 				+ "**************************************************";
 	}
 
@@ -45,12 +45,12 @@ public class RoundTable extends Event {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null || getClass() != obj.getClass())
+		}
+		if (obj == null || getClass() != obj.getClass() || !super.equals(obj)) {
 			return false;
-		if (!super.equals(obj))
-			return false;
+		}
 		RoundTable other = (RoundTable) obj;
 		return conferenceNumber == other.conferenceNumber;
 	}
