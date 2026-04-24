@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
-
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +21,10 @@ public class ViewStart extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private final int FRAME_WIDTH = 444;
+
+	private JButton BTN_show_encounters;
+	private JButton BTN_show_events;
+	private JButton BTN_show_guests;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,17 +75,17 @@ public class ViewStart extends JFrame {
 		PAN_lower_button_choices.setBounds(0, 211, FRAME_WIDTH, 50);
 		PAN_lower_button_choices.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JButton BTN_show_encounters = new JButton("Encuentros");
+		BTN_show_encounters = new JButton("Encuentros");
 		BTN_show_encounters.setFont(new Font("Alef", Font.BOLD, 16));
 		BTN_show_encounters.setPreferredSize(new Dimension(130, 35));
 		PAN_lower_button_choices.add(BTN_show_encounters);
 
-		JButton BTN_show_events = new JButton("Eventos");
+		BTN_show_events = new JButton("Eventos");
 		BTN_show_events.setFont(new Font("Alef", Font.BOLD, 24));
 		BTN_show_events.setPreferredSize(new Dimension(130, 35));
 		PAN_lower_button_choices.add(BTN_show_events);
 
-		JButton BTN_show_guests = new JButton("Invitados");
+		BTN_show_guests = new JButton("Invitados");
 		BTN_show_guests.setFont(new Font("Alef", Font.BOLD, 17));
 		BTN_show_guests.setPreferredSize(new Dimension(130, 35));
 		PAN_lower_button_choices.add(BTN_show_guests);
@@ -102,5 +105,17 @@ public class ViewStart extends JFrame {
 
 		getContentPane().add(IMG_bg_start_splash);
 		getContentPane().setComponentZOrder(IMG_bg_start_splash, getContentPane().getComponentCount() - 1);
+	}
+
+	public JButton getBTN_show_encounters() {
+		return BTN_show_encounters;
+	}
+
+	public JButton getBTN_show_events() {
+		return BTN_show_events;
+	}
+
+	public JButton getBTN_show_guests() {
+		return BTN_show_guests;
 	}
 }
