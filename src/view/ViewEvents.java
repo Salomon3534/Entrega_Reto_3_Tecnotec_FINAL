@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,13 +15,13 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
 import model.Event;
 
 public class ViewEvents extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JButton BTN_back; // Atributo para el controlador
 
 	public ViewEvents() {
 		setSize(new Dimension(640, 480));
@@ -40,15 +39,15 @@ public class ViewEvents extends JFrame {
 		header.setBorder(new EmptyBorder(10, 0, 0, 10));
 		header.setLayout(null);
 
-		JButton BTN = new JButton("\u2190");
-		BTN.setBounds(10, 11, 75, 30);
-		BTN.setOpaque(false);
-		BTN.setForeground(new Color(0, 0, 0));
-		BTN.setFont(new Font("Dialog", Font.BOLD, 20));
-		BTN.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		BTN.setBackground(new Color(0, 0, 0));
-		BTN.setPreferredSize(new Dimension(75, 30));
-		header.add(BTN);
+		BTN_back = new JButton("\u2190");
+		BTN_back.setBounds(10, 11, 75, 30);
+		BTN_back.setOpaque(false);
+		BTN_back.setForeground(new Color(0, 0, 0));
+		BTN_back.setFont(new Font("Dialog", Font.BOLD, 20));
+		BTN_back.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		BTN_back.setBackground(new Color(0, 0, 0));
+		BTN_back.setPreferredSize(new Dimension(75, 30));
+		header.add(BTN_back);
 
 		JLabel eventTitle = new JLabel("Eventos");
 		eventTitle.setBounds(216, 11, 159, 30);
@@ -93,7 +92,9 @@ public class ViewEvents extends JFrame {
 		JButton uninscriptionBtn = new JButton("Desinscribirse");
 		uninscriptionBtn.setPreferredSize(new Dimension(150, 25));
 		panel.add(uninscriptionBtn);
-
 	}
 
+	public JButton getBTN_back() {
+		return BTN_back;
+	}
 }
