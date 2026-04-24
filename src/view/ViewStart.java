@@ -1,35 +1,34 @@
 package view;
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.Box;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Component;
 import java.awt.Dimension;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import java.awt.Image;
-import javax.swing.JPanel;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.net.URL;
 
-public class Start {
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-	private JFrame frmEuskalEncountermenu;
-	private final int BUTTON_FONT_SIZE = 24;
-	private final Font BUTTON_FONT = new Font("Gabriola", Font.BOLD, BUTTON_FONT_SIZE);
+public class ViewStart extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private final int FRAME_WIDTH = 444;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Start window = new Start();
-					window.frmEuskalEncountermenu.setVisible(true);
+					ViewStart frame = new ViewStart();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,27 +36,29 @@ public class Start {
 		});
 	}
 
-	public Start() {
+	public ViewStart() {
 		initialize();
 	}
 
 	private void initialize() {
-		frmEuskalEncountermenu = new JFrame();
-		frmEuskalEncountermenu.setTitle("Euskal Encounter (Menu de usuario)");
-		frmEuskalEncountermenu
-				.setIconImage(Toolkit.getDefaultToolkit().getImage(Start.class.getResource("/assets/img_ee_icon.png")));
-		frmEuskalEncountermenu.setResizable(false);
-		frmEuskalEncountermenu.setBounds(100, 100, 460, 310);
-		frmEuskalEncountermenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmEuskalEncountermenu.getContentPane().setLayout(null);
+		setTitle("Euskal Encounter (Menu de usuario)");
+		setResizable(false);
+		setBounds(100, 100, 460, 310);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
+
+		URL iconUrl = ViewStart.class.getResource("/assets/img_ee_icon.png");
+		if (iconUrl != null) {
+			setIconImage(Toolkit.getDefaultToolkit().getImage(iconUrl));
+		}
 
 		Box HBOX_TabTitleTop = Box.createHorizontalBox();
 		HBOX_TabTitleTop.setOpaque(true);
 		HBOX_TabTitleTop.setBounds(0, 0, FRAME_WIDTH, 50);
 		HBOX_TabTitleTop.setBackground(new Color(0, 128, 255));
-		frmEuskalEncountermenu.getContentPane().add(HBOX_TabTitleTop);
+		getContentPane().add(HBOX_TabTitleTop);
 
-		JLabel LBL_TabTitle = new JLabel("Menú principal de usuario");
+		JLabel LBL_TabTitle = new JLabel("MenÃº principal de usuario");
 		LBL_TabTitle.setFont(new Font("Alef", Font.BOLD, 33));
 		LBL_TabTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		LBL_TabTitle.setVerticalAlignment(SwingConstants.CENTER);
@@ -86,15 +87,20 @@ public class Start {
 		BTN_show_guests.setPreferredSize(new Dimension(130, 35));
 		PAN_lower_button_choices.add(BTN_show_guests);
 
-		frmEuskalEncountermenu.getContentPane().add(PAN_lower_button_choices);
+		getContentPane().add(PAN_lower_button_choices);
 
 		JLabel IMG_bg_start_splash = new JLabel("");
+		IMG_bg_start_splash.setIcon(new ImageIcon(ViewStart.class.getResource("/assets/img_start_splash.jpg")));
 		IMG_bg_start_splash.setBounds(0, 50, FRAME_WIDTH, 221);
 
-		ImageIcon originalIcon = new ImageIcon(Start.class.getResource("/assets/img_start_splash.jpg"));
-		Image scaledImage = originalIcon.getImage().getScaledInstance(FRAME_WIDTH, 221, Image.SCALE_SMOOTH);
-		IMG_bg_start_splash.setIcon(new ImageIcon(scaledImage));
+		URL splashUrl = ViewStart.class.getResource("/assets/img_start_splash.jpg");
+		if (splashUrl != null) {
+			ImageIcon originalIcon = new ImageIcon(splashUrl);
+			Image scaledImage = originalIcon.getImage().getScaledInstance(FRAME_WIDTH, 221, Image.SCALE_SMOOTH);
+			IMG_bg_start_splash.setIcon(new ImageIcon(scaledImage));
+		}
 
-		frmEuskalEncountermenu.getContentPane().add(IMG_bg_start_splash);
+		getContentPane().add(IMG_bg_start_splash);
+		getContentPane().setComponentZOrder(IMG_bg_start_splash, getContentPane().getComponentCount() - 1);
 	}
 }

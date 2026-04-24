@@ -43,14 +43,14 @@ public class EventsView extends JFrame {
 		FlowLayout fl_header = new FlowLayout(FlowLayout.LEFT, 5, 5);
 		header.setLayout(fl_header);
 
-		JButton closeButton = new JButton("\u2190");
-		closeButton.setOpaque(false);
-		closeButton.setForeground(new Color(0, 0, 0));
-		closeButton.setFont(new Font("Dialog", Font.BOLD, 20));
-		closeButton.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		closeButton.setBackground(new Color(0, 0, 0));
-		closeButton.setPreferredSize(new Dimension(75, 30));
-		header.add(closeButton);
+		JButton BTN = new JButton("\u2190");
+		BTN.setOpaque(false);
+		BTN.setForeground(new Color(0, 0, 0));
+		BTN.setFont(new Font("Dialog", Font.BOLD, 20));
+		BTN.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		BTN.setBackground(new Color(0, 0, 0));
+		BTN.setPreferredSize(new Dimension(75, 30));
+		header.add(BTN);
 
 		JLabel eventTitle = new JLabel("Eventos");
 		eventTitle.setBackground(new Color(0, 0, 0));
