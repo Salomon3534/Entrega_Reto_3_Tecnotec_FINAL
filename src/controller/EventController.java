@@ -1,11 +1,11 @@
 package controller;
 
-import view.EventsView;
+import view.ViewEvents;
 
 public class EventController {
-	EventsView view;
+	ViewEvents view;
 	
-	public EventController(EventsView view) {
+	public EventController(ViewEvents view) {
 		this.view = view;
 	}
 	

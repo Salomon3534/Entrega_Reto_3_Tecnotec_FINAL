@@ -21,12 +21,12 @@ import model.Event;
 
 import java.awt.Font;
 
-public class EventsView extends JFrame {
+public class ViewEvents extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public EventsView() {
+	public ViewEvents() {
 		setSize(new Dimension(640, 480));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -40,10 +40,10 @@ public class EventsView extends JFrame {
 		header.setPreferredSize(new Dimension(9, 50));
 		contentPane.add(header, BorderLayout.NORTH);
 		header.setBorder(new EmptyBorder(10, 0, 0, 10));
-		FlowLayout fl_header = new FlowLayout(FlowLayout.LEFT, 5, 5);
-		header.setLayout(fl_header);
+		header.setLayout(null);
 
 		JButton BTN = new JButton("\u2190");
+		BTN.setBounds(10, 11, 75, 30);
 		BTN.setOpaque(false);
 		BTN.setForeground(new Color(0, 0, 0));
 		BTN.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -53,10 +53,11 @@ public class EventsView extends JFrame {
 		header.add(BTN);
 
 		JLabel eventTitle = new JLabel("Eventos");
+		eventTitle.setBounds(216, 11, 159, 30);
 		eventTitle.setBackground(new Color(0, 0, 0));
 		eventTitle.setFont(new Font("FreeMono", Font.BOLD, 30));
 		eventTitle.setHorizontalTextPosition(SwingConstants.CENTER);
-		eventTitle.setHorizontalAlignment(SwingConstants.TRAILING);
+		eventTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		eventTitle.setPreferredSize(new Dimension(400, 30));
 		header.add(eventTitle);
 
