@@ -46,10 +46,6 @@ local.properties
 .loadpath
 .recommenders
 
-# Archivos específicos de Eclipse que a veces se ignoran (opcional)
-#.project
-#.classpath
-
 # --- NetBeans ---
 nbproject/private/
 nbbuild/
