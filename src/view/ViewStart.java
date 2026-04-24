@@ -96,7 +96,6 @@ public class ViewStart extends JFrame {
 		getContentPane().add(PAN_lower_button_choices);
 
 		JLabel IMG_bg_start_splash = new JLabel("");
-		IMG_bg_start_splash.setIcon(new ImageIcon(ViewStart.class.getResource("/assets/img_start_splash.jpg")));
 		IMG_bg_start_splash.setBounds(0, 50, FRAME_WIDTH, 221);
 
 		URL splashUrl = ViewStart.class.getResource("/assets/img_start_splash.jpg");
