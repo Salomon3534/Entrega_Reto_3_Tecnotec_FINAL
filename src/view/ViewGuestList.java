@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class GestListView extends JFrame {
+public class ViewGuestList extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -18,7 +18,7 @@ public class GestListView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GestListView frame = new GestListView();
+					ViewGuestList frame = new ViewGuestList();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +30,7 @@ public class GestListView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GestListView() {
+	public ViewGuestList() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
