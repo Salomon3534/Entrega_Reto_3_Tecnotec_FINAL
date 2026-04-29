@@ -3,11 +3,12 @@ package view;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.net.URL;
 
 import javax.swing.Box;
@@ -18,6 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+
+import dao.DatabaseConnector;
 
 public class ViewStart extends JFrame {
 
@@ -50,7 +53,7 @@ public class ViewStart extends JFrame {
 		setTitle("Euskal Encounter (Menu de usuario)");
 		setResizable(false);
 		setBounds(100, 100, 460, 310);
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		URL iconUrl = ViewStart.class.getResource("/assets/img_ee_icon.png");

@@ -9,7 +9,7 @@ import model.Event;
 import model.Guest;
 import model.User;
 
-public class TotalManagerEuskalEncounter {
+public class TotalDAO {
 
 	private ManagerEncounters managerEncounters = new ManagerEncounters();
 	private ManagerEvents managerEvents = new ManagerEvents();
@@ -17,7 +17,7 @@ public class TotalManagerEuskalEncounter {
 	private ManagerUsers managerUsers = new ManagerUsers();
 	private Logger logger = new Logger();
 
-	public TotalManagerEuskalEncounter() throws SQLException, IOException {
+	public TotalDAO() throws SQLException, IOException {
 		logger.writeLog("SISTEMA - Gestores instanciados y listos.");
 	}
 

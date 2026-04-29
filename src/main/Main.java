@@ -4,13 +4,15 @@ import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import controller.StartController;
+import controller.ControllerStart;
+import controller.TotalDAO;
 import dao.DatabaseConnector;
 import view.ViewStart;
 
 public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< Updated upstream
 		// Inicio de la interfaz gráfica de usuario
 		EventQueue.invokeLater(new Runnable() {
 			@Override
@@ -29,6 +31,11 @@ public class Main {
 		 * ahora es gestionado por los controladores de la vista.
 		 */
 		/*
+=======
+		
+
+		
+>>>>>>> Stashed changes
 		try {
 			Connection connection = DatabaseConnector.getConexion();
 
@@ -37,11 +44,27 @@ public class Main {
 						"No se pudo establecer comunicación con el servidor SQL. Verifique que la base de datos existe.");
 			}
 
+<<<<<<< Updated upstream
 			// TotalManagerEuskalEncounter managerTotal = new TotalManagerEuskalEncounter();
 			// ViewEuskalEncounter view = new ViewEuskalEncounter(managerTotal);
 			// view.mainMenu();
+=======
+			EventQueue.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						TotalDAO tm = new TotalDAO();
+						
+						ViewStart vistaPrincipal = new ViewStart();
+						ControllerStart control = new ControllerStart(vistaPrincipal, tm);
+						control.showStart();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+>>>>>>> Stashed changes
 
-			DatabaseConnector.cerrarConexion();
 
 		} catch (SQLException e) {
 			System.err.println("\n[ERROR DE BASE DE DATOS]");
