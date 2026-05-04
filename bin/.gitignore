@@ -1,6 +1,6 @@
-/dao/
 /assets/
-/view/
 /controller/
-/model/
+/dao/
 /main/
+/model/
+/view/

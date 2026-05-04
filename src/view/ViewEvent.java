@@ -16,14 +16,16 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import model.Event;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class ViewEvents extends JFrame {
+public class ViewEvent extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton BTN_back; // Atributo para el controlador
 
-	public ViewEvents() {
+	public ViewEvent() {
 		setSize(new Dimension(640, 480));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -86,6 +88,10 @@ public class ViewEvents extends JFrame {
 		panel.add(eventDescription);
 
 		JButton inscriptionBtn = new JButton("Inscribirse");
+		inscriptionBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		inscriptionBtn.setPreferredSize(new Dimension(150, 25));
 		panel.add(inscriptionBtn);
 

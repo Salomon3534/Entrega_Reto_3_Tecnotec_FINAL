@@ -1,6 +1,6 @@
 package controller;
 
-import view.ViewEvents;
+import view.ViewEvent;
 import view.ViewStart;
 
 public class StartController {
@@ -15,7 +15,7 @@ public class StartController {
 	}
 
 	private void abrirEvents() {
-		ViewEvents ve = new ViewEvents();
+		ViewEvent ve = new ViewEvent();
 		EventController ec = new EventController(ve);
 		ec.showEvents();
 		this.vista.dispose();

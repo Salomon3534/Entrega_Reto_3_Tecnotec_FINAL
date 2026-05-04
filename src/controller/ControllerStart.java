@@ -4,7 +4,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import dao.DatabaseConnector;
-import view.ViewEvents;
+import view.ViewEvent;
 import view.ViewGuestList;
 import view.ViewStart;
 
@@ -34,7 +34,7 @@ public class ControllerStart {
 	}
 
 	private void openViewEvents() {
-		ViewEvents ve = new ViewEvents();
+		ViewEvent ve = new ViewEvent();
 		ControllerEvents ce = new ControllerEvents(ve);
 		ce.showEvents();
 		this.vista.dispose();
