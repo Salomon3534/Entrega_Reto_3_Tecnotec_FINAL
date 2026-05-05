@@ -85,12 +85,7 @@ public class Guest {
 
 	@Override
 	public String toString() {
-		return "\n" + "**************************************************\n" + "          FICHA DE INVITADO: "
-				+ (username != null ? username.toUpperCase() : "N/A") + "\n"
-				+ "**************************************************\n" + " > USUARIO:   " + username + "\n"
-				+ " > NOMBRE:    " + name + " " + surnames + "\n" + " > TELÉFONO:  " + phoneNumber + "\n"
-				+ " > CARRERA:   " + career + "\n" + " > EMAIL:     " + email + "\n"
-				+ "**************************************************";
+		return name + " " + surnames + " (" + username + ")";
 	}
 
 	@Override

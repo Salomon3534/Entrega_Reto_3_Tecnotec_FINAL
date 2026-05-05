@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Guest;
 
 public class DaoGuests {
@@ -64,6 +65,24 @@ public class DaoGuests {
 		}
 
 		return sb.length() == 0 ? "No hay invitados registrados." : sb.toString();
+	}
+
+	public static ArrayList<Guest> listGuestsAsList() {
+		ArrayList<Guest> lista = new ArrayList<>();
+		String query = "SELECT * FROM invitados";
+
+		try (Connection con = DatabaseConnector.getConexion();
+				PreparedStatement ps = con.prepareStatement(query);
+				ResultSet rs = ps.executeQuery()) {
+
+			while (rs.next()) {
+				lista.add(resultSetToGuest(rs));
+			}
+		} catch (SQLException e) {
+			Logger.writeLog("ERROR al listar invitados: " + e.getMessage());
+		}
+
+		return lista;
 	}
 
 	public static String updateGuest(Guest g) {

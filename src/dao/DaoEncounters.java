@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import model.Encounter;
 
 public class DaoEncounters {
@@ -58,6 +59,22 @@ public class DaoEncounters {
 			return "Error al listar.";
 		}
 		return sb.length() == 0 ? "No hay encuentros." : sb.toString();
+	}
+
+	public static ArrayList<Encounter> listEncountersAsList() {
+		ArrayList<Encounter> lista = new ArrayList<>();
+		String sql = "SELECT CODIGO, FECHA_INICIO, FECHA_FIN, UBICACION FROM encuentro";
+		try (Connection conn = DatabaseConnector.getConexion();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()) {
+
+			while (rs.next()) {
+				lista.add(resultSetToEncounter(rs));
+			}
+		} catch (SQLException e) {
+			Logger.writeLog("ERROR al listar encuentros: " + e.getMessage());
+		}
+		return lista;
 	}
 
 	public static String updateEncounter(Encounter e) {

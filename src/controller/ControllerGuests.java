@@ -2,7 +2,10 @@ package controller;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import dao.DaoGuests;
 import dao.DatabaseConnector;
+import model.Guest;
 import view.ViewGuestList;
 import view.ViewStart;
 
@@ -13,8 +16,16 @@ public class ControllerGuests {
 	public ControllerGuests(ViewGuestList vg) {
 		this.view = vg;
 
+		cargarInvitados();
+
 		this.view.getBTN_back().addActionListener(_ -> {
 			volverAlInicio();
+		});
+
+		this.view.getGuestList().addListSelectionListener(e -> {
+			if (!e.getValueIsAdjusting()) {
+				actualizarDetalle();
+			}
 		});
 
 		this.view.addWindowListener(new WindowAdapter() {
@@ -24,6 +35,22 @@ public class ControllerGuests {
 				System.exit(0);
 			}
 		});
+	}
+
+	private void cargarInvitados() {
+		view.getListModel().clear();
+		ArrayList<Guest> invitados = DaoGuests.listGuestsAsList();
+		for (Guest guest : invitados) {
+			view.getListModel().addElement(guest);
+		}
+	}
+
+	private void actualizarDetalle() {
+		Guest seleccionado = view.getGuestList().getSelectedValue();
+		if (seleccionado != null) {
+			view.getGuestNameLabel().setText(seleccionado.getName() + " " + seleccionado.getSurnames());
+			view.getGuestEmailLabel().setText(seleccionado.getEmail());
+		}
 	}
 
 	private void volverAlInicio() {

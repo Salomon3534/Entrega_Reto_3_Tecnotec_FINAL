@@ -10,8 +10,6 @@ public class Encounter {
 	private Date dateEnd;
 	private String location;
 
-	// constructor
-
 	public Encounter(int code, String location, Date dateStart, Date dateEnd) {
 		this.code = code;
 		this.location = location;
@@ -19,7 +17,7 @@ public class Encounter {
 		this.dateEnd = dateEnd;
 	}
 
-	// getters y Setters
+	// Getters y Setters
 	public int getCode() {
 		return code;
 	}
@@ -54,15 +52,12 @@ public class Encounter {
 
 	@Override
 	public String toString() {
-		return "\n**************************************************\n" + "                ENCUENTRO #" + code + "\n"
-				+ "**************************************************\n" + " > LUGAR:         " + location + "\n"
-				+ " > FECHAS:        " + dateStart + " al " + dateEnd + "\n"
-				+ "**************************************************";
+		return "Encuentro #" + code + " - " + location;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(code, location, dateStart, dateEnd);
+		return Objects.hash(code);
 	}
 
 	@Override
