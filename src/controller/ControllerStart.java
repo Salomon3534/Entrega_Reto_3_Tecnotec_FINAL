@@ -1,49 +1,50 @@
 package controller;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import dao.DatabaseConnector;
-import view.ViewEvent;
-import view.ViewGuestList;
+import view.ViewEvents;
 import view.ViewStart;
+import view.ViewEncounters;
+import view.ViewGuestList;
 
 public class ControllerStart {
-	ViewStart vista;
-	TotalDAO totalManager;
+	private ViewStart vista;
 
-	public ControllerStart(ViewStart vs, TotalDAO tm) {
+	public ControllerStart(ViewStart vs) {
 		this.vista = vs;
-		this.totalManager = tm;
 
-		this.vista.getBTN_show_events().addActionListener(_ -> {
-			openViewEvents();
+		// Listener para la sección de Eventos
+		this.vista.getBTN_show_events().addActionListener(e -> {
+			abrirEvents();
 		});
 
-		this.vista.getBTN_show_guests().addActionListener(_ -> {
-			openViewGuests();
+		// Listener para la sección de Encuentros
+		this.vista.getBTN_show_encounters().addActionListener(e -> {
+			abrirEncounters();
 		});
 
-		this.vista.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				DatabaseConnector.cerrarConexion();
-				closeStart();
-			}
+		// Listener para la sección de Invitados
+		this.vista.getBTN_show_guests().addActionListener(e -> {
+			abrirGuests();
 		});
 	}
 
-	private void openViewEvents() {
-		ViewEvent ve = new ViewEvent();
-		ControllerEvents ce = new ControllerEvents(ve);
-		ce.showEvents();
+	private void abrirEvents() {
+		ViewEvents ve = new ViewEvents();
+		ControllerEvents ec = new ControllerEvents(ve);
+		ec.showEvents();
 		this.vista.dispose();
 	}
 
-	private void openViewGuests() {
+	private void abrirEncounters() {
+		ViewEncounters ven = new ViewEncounters();
+		ControllerEncounters cec = new ControllerEncounters(ven);
+		cec.showEncounters();
+		this.vista.dispose();
+	}
+
+	private void abrirGuests() {
 		ViewGuestList vg = new ViewGuestList();
-		ControllerGuests cg = new ControllerGuests(vg);
-		cg.showGuestList();
+		ControllerGuests cgc = new ControllerGuests(vg);
+		cgc.showGuestList();
 		this.vista.dispose();
 	}
 

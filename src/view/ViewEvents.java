@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,16 +17,18 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import model.Event;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class ViewEvent extends JFrame {
+public class ViewEvents extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JButton BTN_back; // Atributo para el controlador
+	private JButton BTN_back;
+	private JList<Event> eventList;
+	private DefaultListModel<Event> listModel;
+	private JLabel eventName;
+	private JLabel eventDescription;
 
-	public ViewEvent() {
+	public ViewEvents() {
 		setSize(new Dimension(640, 480));
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -38,69 +41,69 @@ public class ViewEvent extends JFrame {
 		header.setBackground(new Color(53, 132, 228));
 		header.setPreferredSize(new Dimension(9, 50));
 		contentPane.add(header, BorderLayout.NORTH);
-		header.setBorder(new EmptyBorder(10, 0, 0, 10));
 		header.setLayout(null);
 
-		BTN_back = new JButton("\u2190");
+		BTN_back = new JButton("←");
 		BTN_back.setBounds(10, 11, 75, 30);
-		BTN_back.setOpaque(false);
-		BTN_back.setForeground(new Color(0, 0, 0));
 		BTN_back.setFont(new Font("Dialog", Font.BOLD, 20));
 		BTN_back.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		BTN_back.setBackground(new Color(0, 0, 0));
-		BTN_back.setPreferredSize(new Dimension(75, 30));
 		header.add(BTN_back);
 
 		JLabel eventTitle = new JLabel("Eventos");
 		eventTitle.setBounds(216, 11, 159, 30);
-		eventTitle.setBackground(new Color(0, 0, 0));
 		eventTitle.setFont(new Font("FreeMono", Font.BOLD, 30));
-		eventTitle.setHorizontalTextPosition(SwingConstants.CENTER);
 		eventTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		eventTitle.setPreferredSize(new Dimension(400, 30));
 		header.add(eventTitle);
 
 		JPanel mainPanel = new JPanel();
-		mainPanel.setSize(new Dimension(500, 400));
-		mainPanel.setPreferredSize(new Dimension(500, 400));
 		contentPane.add(mainPanel, BorderLayout.CENTER);
 		mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JScrollPane scrollPane = new JScrollPane();
+		listModel = new DefaultListModel<>();
+		eventList = new JList<>(listModel);
+		JScrollPane scrollPane = new JScrollPane(eventList);
+		scrollPane.setPreferredSize(new Dimension(250, 300));
 		mainPanel.add(scrollPane);
 
-		JList<Event> eventList = new JList<>();
-		eventList.setBorder(new LineBorder(new Color(0, 0, 0)));
-		eventList.setPreferredSize(new Dimension(250, 300));
-		mainPanel.add(eventList);
+		JPanel infoPanel = new JPanel();
+		infoPanel.setPreferredSize(new Dimension(250, 300));
+		infoPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 20));
+		mainPanel.add(infoPanel);
 
-		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(250, 300));
-		mainPanel.add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 20));
+		eventName = new JLabel("Selecciona un evento");
+		eventName.setPreferredSize(new Dimension(200, 15));
+		infoPanel.add(eventName);
 
-		JLabel eventName = new JLabel("Nombre del evento aqui");
-		eventName.setPreferredSize(new Dimension(150, 15));
-		panel.add(eventName);
-
-		JLabel eventDescription = new JLabel("Descripci\u00F3n del evento aqui");
-		eventDescription.setPreferredSize(new Dimension(150, 15));
-		panel.add(eventDescription);
+		eventDescription = new JLabel("");
+		eventDescription.setPreferredSize(new Dimension(200, 15));
+		infoPanel.add(eventDescription);
 
 		JButton inscriptionBtn = new JButton("Inscribirse");
-		inscriptionBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		inscriptionBtn.setPreferredSize(new Dimension(150, 25));
-		panel.add(inscriptionBtn);
+		infoPanel.add(inscriptionBtn);
 
 		JButton uninscriptionBtn = new JButton("Desinscribirse");
 		uninscriptionBtn.setPreferredSize(new Dimension(150, 25));
-		panel.add(uninscriptionBtn);
+		infoPanel.add(uninscriptionBtn);
 	}
 
 	public JButton getBTN_back() {
 		return BTN_back;
+	}
+
+	public JList<Event> getEventList() {
+		return eventList;
+	}
+
+	public DefaultListModel<Event> getListModel() {
+		return listModel;
+	}
+
+	public JLabel getEventNameLabel() {
+		return eventName;
+	}
+
+	public JLabel getEventDescLabel() {
+		return eventDescription;
 	}
 }

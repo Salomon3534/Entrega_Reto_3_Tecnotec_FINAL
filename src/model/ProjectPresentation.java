@@ -2,14 +2,11 @@ package model;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Objects;
 
 public class ProjectPresentation extends Event {
 
 	private String projectType;
 	private String projectDescription;
-
-	// constructor
 
 	public ProjectPresentation(int id, String title, String location, String description, Date dateStart, Date dateEnd,
 			Time hourStart, Time hourEnd, int eCode, String projectType, String projectDescription) {
@@ -18,7 +15,6 @@ public class ProjectPresentation extends Event {
 		this.projectDescription = projectDescription;
 	}
 
-	// getters y Setters
 	public String getProjectType() {
 		return projectType;
 	}
@@ -37,31 +33,6 @@ public class ProjectPresentation extends Event {
 
 	@Override
 	public String toString() {
-		return "\n**************************************************\n" + "      PRESENTACI�N PROYECTO: "
-				+ (getTitle() != null ? getTitle().toUpperCase() : "N/A") + "\n"
-				+ "**************************************************\n" + " > ID EVENTO:      " + getId() + "\n"
-				+ " > TIPO PROYECTO:  " + projectType + "\n" + " > DESC. PROYECTO: " + projectDescription + "\n"
-				+ " > LUGAR:          " + getLocation() + "\n" + " > FECHA:          " + getDateStart() + " al "
-				+ getDateEnd() + "\n" + " > HORARIO:        " + getHourStart() + " - " + getHourEnd() + "\n"
-				+ " > ENCUENTRO:      " + getEncounterCode() + "\n" + " > DESC. GENERAL:  " + getDescription() + "\n"
-				+ "**************************************************";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), projectType, projectDescription);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null || getClass() != obj.getClass() || !super.equals(obj)) {
-			return false;
-		}
-		ProjectPresentation other = (ProjectPresentation) obj;
-		return Objects.equals(projectType, other.projectType)
-				&& Objects.equals(projectDescription, other.projectDescription);
+		return "[Proyecto] " + getTitle();
 	}
 }

@@ -64,3 +64,14 @@
 [2026-03-26 10:05:03] ACCI�N: SISTEMA - Gestores instanciados y listos.
 [2026-03-26 10:05:36] ACCI�N: SISTEMA - Gestores instanciados y listos.
 [2026-03-26 10:07:21] ACCI�N: SISTEMA - Gestores instanciados y listos.
+[2026-05-05 22:12:28] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:12:44] ACCIÓN: Conexión cerrada.
+[2026-05-05 22:13:08] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:14:39] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:16:39] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:25:25] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:25:30] ACCIÓN: Conexión cerrada.
+[2026-05-05 22:25:31] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:26:09] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:26:55] ACCIÓN: Conexión establecida con éxito.
+[2026-05-05 22:29:58] ACCIÓN: Conexión establecida con éxito.

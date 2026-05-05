@@ -2,13 +2,10 @@ package model;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Objects;
 
 public class PracticalWorkshop extends Event {
 
 	private int workshopNumber;
-
-	// constructor
 
 	public PracticalWorkshop(int id, String title, String location, String description, Date dateStart, Date dateEnd,
 			Time hourStart, Time hourEnd, int eCode, int workshopNumber) {
@@ -16,7 +13,6 @@ public class PracticalWorkshop extends Event {
 		this.workshopNumber = workshopNumber;
 	}
 
-	// getters y Setters
 	public int getWorkshopNumber() {
 		return workshopNumber;
 	}
@@ -27,30 +23,6 @@ public class PracticalWorkshop extends Event {
 
 	@Override
 	public String toString() {
-		return "\n**************************************************\n" + "          TALLER PR�CTICO: "
-				+ (getTitle() != null ? getTitle().toUpperCase() : "N/A") + "\n"
-				+ "**************************************************\n" + " > ID EVENTO:      " + getId() + "\n"
-				+ " > N�MERO TALLER:  " + workshopNumber + "\n" + " > LUGAR:          " + getLocation() + "\n"
-				+ " > FECHA:          " + getDateStart() + " al " + getDateEnd() + "\n" + " > HORARIO:        "
-				+ getHourStart() + " - " + getHourEnd() + "\n" + " > ENCUENTRO:      " + getEncounterCode() + "\n"
-				+ " > DESCRIPCI�N:    " + getDescription() + "\n"
-				+ "**************************************************";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), workshopNumber);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null || getClass() != obj.getClass() || !super.equals(obj)) {
-			return false;
-		}
-		PracticalWorkshop other = (PracticalWorkshop) obj;
-		return workshopNumber == other.workshopNumber;
+		return "[Taller] " + getTitle();
 	}
 }

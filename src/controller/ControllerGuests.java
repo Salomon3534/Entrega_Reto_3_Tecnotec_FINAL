@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import dao.DatabaseConnector;
 import view.ViewGuestList;
 import view.ViewStart;
@@ -22,6 +21,7 @@ public class ControllerGuests {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				DatabaseConnector.cerrarConexion();
+				System.exit(0);
 			}
 		});
 	}

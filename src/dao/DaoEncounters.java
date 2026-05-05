@@ -1,18 +1,15 @@
-package controller;
+package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import dao.DatabaseConnector;
 import model.Encounter;
 
-public class ManagerEncounters {
+public class DaoEncounters {
 
-	// metodo para crear un encuentro
-	public String createEncounter(String location, Date dateStart, Date dateEnd) throws SQLException {
+	public static String createEncounter(String location, Date dateStart, Date dateEnd) {
 		String sql = "INSERT INTO encuentro (FECHA_INICIO, FECHA_FIN, UBICACION) VALUES (?, ?, ?)";
 		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -20,62 +17,50 @@ public class ManagerEncounters {
 			pstmt.setDate(2, dateEnd);
 			pstmt.setString(3, location);
 			pstmt.executeUpdate();
+
+			Logger.writeLog("Encuentro creado en " + location);
 			return "Encuentro creado correctamente.";
+		} catch (SQLException e) {
+			Logger.writeLog("ERROR al crear encuentro: " + e.getMessage());
+			return "Error: " + e.getMessage();
 		}
 	}
 
-	// metodo para buscar un encuentro por su identificador unico
-	public String getEncounterById(int code) {
+	public static String getEncounterById(int code) {
 		String sql = "SELECT CODIGO, FECHA_INICIO, FECHA_FIN, UBICACION FROM encuentro WHERE CODIGO = ?";
-
 		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			pstmt.setInt(1, code);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
-					int codigo = rs.getInt("CODIGO");
-					Date inicio = rs.getDate("FECHA_INICIO");
-					Date fin = rs.getDate("FECHA_FIN");
-					String ubicacion = rs.getString("UBICACION");
-
-					Encounter e = new Encounter(codigo, ubicacion, inicio, fin);
+					Encounter e = resultSetToEncounter(rs);
 					return e.toString();
-				} else {
-					return "No se encontro ningun encuentro con el identificador: " + code;
 				}
 			}
 		} catch (SQLException e) {
-			return "Error al buscar el encuentro: " + e.getMessage();
+			Logger.writeLog("ERROR al buscar encuentro " + code + ": " + e.getMessage());
 		}
+		return "No se encontró el encuentro con código: " + code;
 	}
 
-	// metodo para listar todos los encuentros
-	public String listEncounters() {
+	public static String listEncounters() {
 		StringBuilder sb = new StringBuilder();
 		String sql = "SELECT CODIGO, FECHA_INICIO, FECHA_FIN, UBICACION FROM encuentro";
-
 		try (Connection conn = DatabaseConnector.getConexion();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
 
 			while (rs.next()) {
-				int codigo = rs.getInt("CODIGO");
-				Date inicio = rs.getDate("FECHA_INICIO");
-				Date fin = rs.getDate("FECHA_FIN");
-				String ubicacion = rs.getString("UBICACION");
-
-				Encounter e = new Encounter(codigo, ubicacion, inicio, fin);
-				sb.append(e.toString()).append("\n");
+				sb.append(resultSetToEncounter(rs).toString()).append("\n");
 			}
 		} catch (SQLException e) {
-			return "Error al listar encuentros: " + e.getMessage();
+			Logger.writeLog("ERROR al listar encuentros: " + e.getMessage());
+			return "Error al listar.";
 		}
-
-		return sb.length() == 0 ? "No hay encuentros registrados." : sb.toString();
+		return sb.length() == 0 ? "No hay encuentros." : sb.toString();
 	}
 
-	// metodo para actualizar un encuentro existente
-	public String updateEncounter(Encounter e) throws SQLException {
+	public static String updateEncounter(Encounter e) {
 		String sql = "UPDATE encuentro SET FECHA_INICIO = ?, FECHA_FIN = ?, UBICACION = ? WHERE CODIGO = ?";
 		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
@@ -85,36 +70,48 @@ public class ManagerEncounters {
 			pstmt.setInt(4, e.getCode());
 
 			int rows = pstmt.executeUpdate();
-			return rows > 0 ? "Encuentro actualizado." : "No se encontro el encuentro.";
+			if (rows > 0) {
+				Logger.writeLog("Encuentro actualizado: ID " + e.getCode());
+				return "Encuentro actualizado.";
+			}
+		} catch (SQLException ex) {
+			Logger.writeLog("ERROR al actualizar encuentro: " + ex.getMessage());
 		}
+		return "No se pudo actualizar.";
 	}
 
-	// metodo para eliminar un encuentro por identificador
-	public String deleteEncounter(int code) throws SQLException {
+	public static String deleteEncounter(int code) {
 		String sql = "DELETE FROM encuentro WHERE CODIGO = ?";
 		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 			pstmt.setInt(1, code);
 			int rows = pstmt.executeUpdate();
-			return rows > 0 ? "Encuentro eliminado." : "No se encontro el identificador.";
+			if (rows > 0) {
+				Logger.writeLog("Encuentro eliminado: ID " + code);
+				return "Encuentro eliminado.";
+			}
+		} catch (SQLException e) {
+			Logger.writeLog("ERROR al eliminar encuentro: " + e.getMessage());
 		}
+		return "No se encontró el identificador.";
 	}
 
-	// metodo para obtener el proximo valor auto-incremental de la tabla EVENTO
-	public int getGlobalCounter() {
+	public static int getGlobalCounter() {
 		String sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES "
-				+ "WHERE TABLE_SCHEMA = 'EUSKALENCOUNTER' AND TABLE_NAME = 'EVENTO'";
-
+				+ "WHERE TABLE_SCHEMA = 'euskalencounter' AND TABLE_NAME = 'evento'";
 		try (Connection conn = DatabaseConnector.getConexion();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery()) {
-
-			if (rs.next()) {
+			if (rs.next())
 				return rs.getInt("AUTO_INCREMENT");
-			}
 		} catch (SQLException e) {
-			System.err.println("Error al obtener el contador global: " + e.getMessage());
+			Logger.writeLog("ERROR al obtener contador: " + e.getMessage());
 		}
 		return -1;
+	}
+
+	private static Encounter resultSetToEncounter(ResultSet rs) throws SQLException {
+		return new Encounter(rs.getInt("CODIGO"), rs.getString("UBICACION"), rs.getDate("FECHA_INICIO"),
+				rs.getDate("FECHA_FIN"));
 	}
 }
