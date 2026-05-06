@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +24,7 @@ public class ViewEncounters extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JButton BTN_back;
+	private JButton viewEventsBtn;
 	private JList<Encounter> encounterList;
 	private DefaultListModel<Encounter> listModel;
 	private JLabel encounterName;
@@ -38,7 +40,7 @@ public class ViewEncounters extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JPanel header = new JPanel();
-		header.setBackground(new Color(53, 132, 228));
+		header.setBackground(new Color(0, 128, 255));
 		header.setPreferredSize(new Dimension(9, 50));
 		contentPane.add(header, BorderLayout.NORTH);
 		header.setLayout(null);
@@ -51,7 +53,8 @@ public class ViewEncounters extends JFrame {
 
 		JLabel encounterTitle = new JLabel("Encuentros");
 		encounterTitle.setBounds(10, 11, 594, 30);
-		encounterTitle.setFont(new Font("FreeMono", Font.BOLD, 30));
+		encounterTitle.setFont(new Font("Alef", Font.BOLD, 30));
+		encounterTitle.setForeground(Color.WHITE);
 		encounterTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		header.add(encounterTitle);
 
@@ -61,6 +64,10 @@ public class ViewEncounters extends JFrame {
 
 		listModel = new DefaultListModel<>();
 		encounterList = new JList<>(listModel);
+		// Centrar texto de la lista de encuentros
+		DefaultListCellRenderer renderer = new DefaultListCellRenderer();
+		renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		encounterList.setCellRenderer(renderer);
 		JScrollPane scrollPane = new JScrollPane(encounterList);
 		scrollPane.setPreferredSize(new Dimension(250, 300));
 		mainPanel.add(scrollPane);
@@ -71,20 +78,24 @@ public class ViewEncounters extends JFrame {
 		mainPanel.add(infoPanel);
 
 		encounterName = new JLabel("Selecciona un encuentro");
+		encounterName.setHorizontalAlignment(SwingConstants.CENTER);
 		encounterName.setPreferredSize(new Dimension(200, 15));
 		infoPanel.add(encounterName);
 
 		encounterDates = new JLabel("");
+		encounterDates.setHorizontalAlignment(SwingConstants.CENTER);
 		encounterDates.setPreferredSize(new Dimension(200, 15));
 		infoPanel.add(encounterDates);
 
-		JButton viewButton = new JButton("Ver Detalles");
-		viewButton.setPreferredSize(new Dimension(150, 25));
-		infoPanel.add(viewButton);
+		viewEventsBtn = new JButton("Ver Eventos");
+		viewEventsBtn.setHorizontalAlignment(SwingConstants.CENTER);
+		viewEventsBtn.setPreferredSize(new Dimension(150, 25));
+		viewEventsBtn.setBackground(new Color(0, 128, 255));
+		viewEventsBtn.setForeground(Color.WHITE);
+		viewEventsBtn.setFont(new Font("Alef", Font.BOLD, 11));
+		infoPanel.add(viewEventsBtn);
 
-		JButton editButton = new JButton("Editar");
-		editButton.setPreferredSize(new Dimension(150, 25));
-		infoPanel.add(editButton);
+		// Botón editar eliminado porque no tenía funcionalidad asociada
 	}
 
 	public JButton getBTN_back() {
@@ -105,5 +116,9 @@ public class ViewEncounters extends JFrame {
 
 	public JLabel getEncounterDatesLabel() {
 		return encounterDates;
+	}
+
+	public JButton getViewEventsBtn() {
+		return viewEventsBtn;
 	}
 }

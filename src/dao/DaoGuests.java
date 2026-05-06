@@ -11,13 +11,13 @@ public class DaoGuests {
 
 	public static String getGuestByUsername(String username) {
 		String query = "SELECT * FROM invitados WHERE NOMBRE_USUARIO = ?";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, username);
-			try (ResultSet rs = ps.executeQuery()) {
-				if (rs.next()) {
-					Guest g = resultSetToGuest(rs);
-					return g.toString();
+			preparedStatement.setString(1, username);
+			try (ResultSet resultSet = preparedStatement.executeQuery()) {
+				if (resultSet.next()) {
+					Guest guest = resultSetToGuest(resultSet);
+					return guest.toString();
 				}
 			}
 		} catch (SQLException e) {
@@ -26,93 +26,93 @@ public class DaoGuests {
 		return "No se encontró ningún invitado con el nombre de usuario: " + username;
 	}
 
-	public static String createGuest(Guest g) {
+	public static String createGuest(Guest guest) {
 		String query = "INSERT INTO invitados (NOMBRE_USUARIO, NOMBRE, APELLIDOS, TELEFONO, DESCRIPCION_RECORRIDO, EMAIL, CONTRASENA) VALUES (?,?,?,?,?,?,?)";
 
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, g.getUsername());
-			ps.setString(2, g.getName());
-			ps.setString(3, g.getSurnames());
-			ps.setString(4, g.getPhoneNumber());
-			ps.setString(5, g.getCareer());
-			ps.setString(6, g.getEmail());
-			ps.setString(7, g.getPassword());
+			preparedStatement.setString(1, guest.getUsername());
+			preparedStatement.setString(2, guest.getName());
+			preparedStatement.setString(3, guest.getSurnames());
+			preparedStatement.setString(4, guest.getPhoneNumber());
+			preparedStatement.setString(5, guest.getCareer());
+			preparedStatement.setString(6, guest.getEmail());
+			preparedStatement.setString(7, guest.getPassword());
 
-			ps.executeUpdate();
-			Logger.writeLog("Invitado creado: " + g.getUsername());
-			return "Invitado '" + g.getUsername() + "' creado con éxito.";
+			preparedStatement.executeUpdate();
+			Logger.writeLog("Invitado creado: " + guest.getUsername());
+			return "Invitado '" + guest.getUsername() + "' creado con éxito.";
 		} catch (SQLException e) {
-			Logger.writeLog("ERROR al crear invitado '" + g.getUsername() + "': " + e.getMessage());
+			Logger.writeLog("ERROR al crear invitado '" + guest.getUsername() + "': " + e.getMessage());
 			return "Error al crear invitado: " + e.getMessage();
 		}
 	}
 
 	public static String listGuests() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder stringBuilder = new StringBuilder();
 		String query = "SELECT * FROM invitados";
 
-		try (Connection con = DatabaseConnector.getConexion();
-				PreparedStatement ps = con.prepareStatement(query);
-				ResultSet rs = ps.executeQuery()) {
+		try (Connection connection = DatabaseConnector.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
 
-			while (rs.next()) {
-				sb.append(resultSetToGuest(rs).toString()).append("\n");
+			while (resultSet.next()) {
+				stringBuilder.append(resultSetToGuest(resultSet).toString()).append("\n");
 			}
 		} catch (SQLException e) {
 			Logger.writeLog("ERROR al listar invitados: " + e.getMessage());
 			return "Error al listar invitados.";
 		}
 
-		return sb.length() == 0 ? "No hay invitados registrados." : sb.toString();
+		return stringBuilder.length() == 0 ? "No hay invitados registrados." : stringBuilder.toString();
 	}
 
 	public static ArrayList<Guest> listGuestsAsList() {
-		ArrayList<Guest> lista = new ArrayList<>();
+		ArrayList<Guest> guestList = new ArrayList<>();
 		String query = "SELECT * FROM invitados";
 
-		try (Connection con = DatabaseConnector.getConexion();
-				PreparedStatement ps = con.prepareStatement(query);
-				ResultSet rs = ps.executeQuery()) {
+		try (Connection connection = DatabaseConnector.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
 
-			while (rs.next()) {
-				lista.add(resultSetToGuest(rs));
+			while (resultSet.next()) {
+				guestList.add(resultSetToGuest(resultSet));
 			}
 		} catch (SQLException e) {
 			Logger.writeLog("ERROR al listar invitados: " + e.getMessage());
 		}
 
-		return lista;
+		return guestList;
 	}
 
-	public static String updateGuest(Guest g) {
+	public static String updateGuest(Guest guest) {
 		String query = "UPDATE invitados SET NOMBRE=?, APELLIDOS=?, TELEFONO=?, DESCRIPCION_RECORRIDO=?, EMAIL=?, CONTRASENA=? WHERE NOMBRE_USUARIO=?";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, g.getName());
-			ps.setString(2, g.getSurnames());
-			ps.setString(3, g.getPhoneNumber());
-			ps.setString(4, g.getCareer());
-			ps.setString(5, g.getEmail());
-			ps.setString(6, g.getPassword());
-			ps.setString(7, g.getUsername());
+			preparedStatement.setString(1, guest.getName());
+			preparedStatement.setString(2, guest.getSurnames());
+			preparedStatement.setString(3, guest.getPhoneNumber());
+			preparedStatement.setString(4, guest.getCareer());
+			preparedStatement.setString(5, guest.getEmail());
+			preparedStatement.setString(6, guest.getPassword());
+			preparedStatement.setString(7, guest.getUsername());
 
-			if (ps.executeUpdate() > 0) {
-				Logger.writeLog("Invitado actualizado: " + g.getUsername());
-				return "Datos de '" + g.getUsername() + "' actualizados correctamente.";
+			if (preparedStatement.executeUpdate() > 0) {
+				Logger.writeLog("Invitado actualizado: " + guest.getUsername());
+				return "Datos de '" + guest.getUsername() + "' actualizados correctamente.";
 			}
 		} catch (SQLException e) {
-			Logger.writeLog("ERROR al actualizar invitado '" + g.getUsername() + "': " + e.getMessage());
+			Logger.writeLog("ERROR al actualizar invitado '" + guest.getUsername() + "': " + e.getMessage());
 		}
 		return "Error: El usuario no existe o no se pudo actualizar.";
 	}
 
 	public static String deleteGuest(String username) {
 		String query = "DELETE FROM invitados WHERE NOMBRE_USUARIO = ?";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, username);
-			if (ps.executeUpdate() > 0) {
+			preparedStatement.setString(1, username);
+			if (preparedStatement.executeUpdate() > 0) {
 				Logger.writeLog("Invitado eliminado: " + username);
 				return "Invitado '" + username + "' eliminado correctamente.";
 			}
@@ -122,9 +122,26 @@ public class DaoGuests {
 		return "Error: No se encontró al usuario '" + username + "'.";
 	}
 
-	private static Guest resultSetToGuest(ResultSet rs) throws SQLException {
-		return new Guest(rs.getString("NOMBRE_USUARIO"), rs.getString("NOMBRE"), rs.getString("APELLIDOS"),
-				rs.getString("TELEFONO"), rs.getString("DESCRIPCION_RECORRIDO"), rs.getString("EMAIL"),
-				rs.getString("CONTRASENA"));
+	public static Guest getGuestByUsernameAndPassword(String username, String password) {
+		String query = "SELECT * FROM invitados WHERE NOMBRE_USUARIO = ? AND CONTRASENA = ?";
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, password);
+			try (ResultSet resultSet = preparedStatement.executeQuery()) {
+				if (resultSet.next()) {
+					return resultSetToGuest(resultSet);
+				}
+			}
+		} catch (SQLException e) {
+			Logger.writeLog("ERROR al validar credenciales de '" + username + "': " + e.getMessage());
+		}
+		return null;
+	}
+
+	private static Guest resultSetToGuest(ResultSet resultSet) throws SQLException {
+		return new Guest(resultSet.getString("NOMBRE_USUARIO"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDOS"),
+				resultSet.getString("TELEFONO"), resultSet.getString("DESCRIPCION_RECORRIDO"), resultSet.getString("EMAIL"),
+				resultSet.getString("CONTRASENA"));
 	}
 }

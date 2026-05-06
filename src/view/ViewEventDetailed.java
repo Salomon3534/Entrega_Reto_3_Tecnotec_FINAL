@@ -33,7 +33,7 @@ public class ViewEventDetailed extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JPanel header = new JPanel();
-		header.setBackground(new Color(53, 132, 228));
+		header.setBackground(new Color(0, 128, 255));
 		header.setPreferredSize(new Dimension(9, 60));
 		header.setLayout(null);
 		contentPane.add(header, BorderLayout.NORTH);
@@ -46,7 +46,8 @@ public class ViewEventDetailed extends JFrame {
 
 		lblTitle = new JLabel("Nombre del Evento");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("FreeMono", Font.BOLD, 22));
+		lblTitle.setFont(new Font("Alef", Font.BOLD, 22));
+		lblTitle.setForeground(Color.WHITE);
 		lblTitle.setBounds(80, 15, 330, 30);
 		header.add(lblTitle);
 
@@ -56,11 +57,13 @@ public class ViewEventDetailed extends JFrame {
 		contentPane.add(mainPanel, BorderLayout.CENTER);
 
 		lblLocation = new JLabel("Ubicación: ---");
+		lblLocation.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLocation.setPreferredSize(new Dimension(450, 20));
 		lblLocation.setFont(new Font("Tahoma", Font.BOLD, 14));
 		mainPanel.add(lblLocation);
 
 		lblDates = new JLabel("Fecha: --- | Horario: ---");
+		lblDates.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDates.setPreferredSize(new Dimension(450, 20));
 		mainPanel.add(lblDates);
 
@@ -73,7 +76,8 @@ public class ViewEventDetailed extends JFrame {
 		mainPanel.add(txtDescription);
 
 		lblSpecificInfo = new JLabel("");
-		lblSpecificInfo.setForeground(new Color(53, 132, 228));
+		lblSpecificInfo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSpecificInfo.setForeground(new Color(0, 128, 255));
 		lblSpecificInfo.setFont(new Font("Tahoma", Font.ITALIC, 13));
 		lblSpecificInfo.setPreferredSize(new Dimension(450, 30));
 		mainPanel.add(lblSpecificInfo);
@@ -84,14 +88,19 @@ public class ViewEventDetailed extends JFrame {
 		contentPane.add(footer, BorderLayout.SOUTH);
 
 		BTN_action = new JButton("Inscribirse");
+		BTN_action.setHorizontalAlignment(SwingConstants.CENTER);
 		BTN_action.setPreferredSize(new Dimension(180, 40));
-		BTN_action.setBackground(new Color(53, 132, 228));
+		BTN_action.setBackground(new Color(0, 128, 255));
 		BTN_action.setForeground(Color.WHITE);
-		BTN_action.setFont(new Font("Tahoma", Font.BOLD, 13));
+		BTN_action.setFont(new Font("Alef", Font.BOLD, 13));
 		footer.add(BTN_action);
 
 		BTN_cancel = new JButton("Anular Inscripción");
+		BTN_cancel.setHorizontalAlignment(SwingConstants.CENTER);
 		BTN_cancel.setPreferredSize(new Dimension(180, 40));
+		BTN_cancel.setBackground(new Color(200, 0, 0));
+		BTN_cancel.setForeground(Color.WHITE);
+		BTN_cancel.setFont(new Font("Alef", Font.BOLD, 13));
 		footer.add(BTN_cancel);
 	}
 

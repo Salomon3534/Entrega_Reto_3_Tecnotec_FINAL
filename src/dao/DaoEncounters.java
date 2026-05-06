@@ -12,12 +12,12 @@ public class DaoEncounters {
 
 	public static String createEncounter(String location, Date dateStart, Date dateEnd) {
 		String sql = "INSERT INTO encuentro (FECHA_INICIO, FECHA_FIN, UBICACION) VALUES (?, ?, ?)";
-		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-			pstmt.setDate(1, dateStart);
-			pstmt.setDate(2, dateEnd);
-			pstmt.setString(3, location);
-			pstmt.executeUpdate();
+			preparedStatement.setDate(1, dateStart);
+			preparedStatement.setDate(2, dateEnd);
+			preparedStatement.setString(3, location);
+			preparedStatement.executeUpdate();
 
 			Logger.writeLog("Encuentro creado en " + location);
 			return "Encuentro creado correctamente.";
@@ -29,13 +29,13 @@ public class DaoEncounters {
 
 	public static String getEncounterById(int code) {
 		String sql = "SELECT CODIGO, FECHA_INICIO, FECHA_FIN, UBICACION FROM encuentro WHERE CODIGO = ?";
-		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-			pstmt.setInt(1, code);
-			try (ResultSet rs = pstmt.executeQuery()) {
-				if (rs.next()) {
-					Encounter e = resultSetToEncounter(rs);
-					return e.toString();
+			preparedStatement.setInt(1, code);
+			try (ResultSet resultSet = preparedStatement.executeQuery()) {
+				if (resultSet.next()) {
+					Encounter encounter = resultSetToEncounter(resultSet);
+					return encounter.toString();
 				}
 			}
 		} catch (SQLException e) {
@@ -45,64 +45,64 @@ public class DaoEncounters {
 	}
 
 	public static String listEncounters() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder stringBuilder = new StringBuilder();
 		String sql = "SELECT CODIGO, FECHA_INICIO, FECHA_FIN, UBICACION FROM encuentro";
-		try (Connection conn = DatabaseConnector.getConexion();
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				ResultSet rs = pstmt.executeQuery()) {
+		try (Connection connection = DatabaseConnector.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
 
-			while (rs.next()) {
-				sb.append(resultSetToEncounter(rs).toString()).append("\n");
+			while (resultSet.next()) {
+				stringBuilder.append(resultSetToEncounter(resultSet).toString()).append("\n");
 			}
 		} catch (SQLException e) {
 			Logger.writeLog("ERROR al listar encuentros: " + e.getMessage());
 			return "Error al listar.";
 		}
-		return sb.length() == 0 ? "No hay encuentros." : sb.toString();
+		return stringBuilder.length() == 0 ? "No hay encuentros." : stringBuilder.toString();
 	}
 
 	public static ArrayList<Encounter> listEncountersAsList() {
-		ArrayList<Encounter> lista = new ArrayList<>();
+		ArrayList<Encounter> encounterList = new ArrayList<>();
 		String sql = "SELECT CODIGO, FECHA_INICIO, FECHA_FIN, UBICACION FROM encuentro";
-		try (Connection conn = DatabaseConnector.getConexion();
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				ResultSet rs = pstmt.executeQuery()) {
+		try (Connection connection = DatabaseConnector.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
 
-			while (rs.next()) {
-				lista.add(resultSetToEncounter(rs));
+			while (resultSet.next()) {
+				encounterList.add(resultSetToEncounter(resultSet));
 			}
 		} catch (SQLException e) {
 			Logger.writeLog("ERROR al listar encuentros: " + e.getMessage());
 		}
-		return lista;
+		return encounterList;
 	}
 
-	public static String updateEncounter(Encounter e) {
+	public static String updateEncounter(Encounter encounter) {
 		String sql = "UPDATE encuentro SET FECHA_INICIO = ?, FECHA_FIN = ?, UBICACION = ? WHERE CODIGO = ?";
-		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-			pstmt.setDate(1, e.getDateStart());
-			pstmt.setDate(2, e.getDateEnd());
-			pstmt.setString(3, e.getLocation());
-			pstmt.setInt(4, e.getCode());
+			preparedStatement.setDate(1, encounter.getDateStart());
+			preparedStatement.setDate(2, encounter.getDateEnd());
+			preparedStatement.setString(3, encounter.getLocation());
+			preparedStatement.setInt(4, encounter.getCode());
 
-			int rows = pstmt.executeUpdate();
+			int rows = preparedStatement.executeUpdate();
 			if (rows > 0) {
-				Logger.writeLog("Encuentro actualizado: ID " + e.getCode());
+				Logger.writeLog("Encuentro actualizado: ID " + encounter.getCode());
 				return "Encuentro actualizado.";
 			}
-		} catch (SQLException ex) {
-			Logger.writeLog("ERROR al actualizar encuentro: " + ex.getMessage());
+		} catch (SQLException exception) {
+			Logger.writeLog("ERROR al actualizar encuentro: " + exception.getMessage());
 		}
 		return "No se pudo actualizar.";
 	}
 
 	public static String deleteEncounter(int code) {
 		String sql = "DELETE FROM encuentro WHERE CODIGO = ?";
-		try (Connection conn = DatabaseConnector.getConexion(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-			pstmt.setInt(1, code);
-			int rows = pstmt.executeUpdate();
+			preparedStatement.setInt(1, code);
+			int rows = preparedStatement.executeUpdate();
 			if (rows > 0) {
 				Logger.writeLog("Encuentro eliminado: ID " + code);
 				return "Encuentro eliminado.";
@@ -116,19 +116,19 @@ public class DaoEncounters {
 	public static int getGlobalCounter() {
 		String sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES "
 				+ "WHERE TABLE_SCHEMA = 'euskalencounter' AND TABLE_NAME = 'evento'";
-		try (Connection conn = DatabaseConnector.getConexion();
-				PreparedStatement pstmt = conn.prepareStatement(sql);
-				ResultSet rs = pstmt.executeQuery()) {
-			if (rs.next())
-				return rs.getInt("AUTO_INCREMENT");
+		try (Connection connection = DatabaseConnector.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
+			if (resultSet.next())
+				return resultSet.getInt("AUTO_INCREMENT");
 		} catch (SQLException e) {
 			Logger.writeLog("ERROR al obtener contador: " + e.getMessage());
 		}
 		return -1;
 	}
 
-	private static Encounter resultSetToEncounter(ResultSet rs) throws SQLException {
-		return new Encounter(rs.getInt("CODIGO"), rs.getString("UBICACION"), rs.getDate("FECHA_INICIO"),
-				rs.getDate("FECHA_FIN"));
+	private static Encounter resultSetToEncounter(ResultSet resultSet) throws SQLException {
+		return new Encounter(resultSet.getInt("CODIGO"), resultSet.getString("UBICACION"), resultSet.getDate("FECHA_INICIO"),
+				resultSet.getDate("FECHA_FIN"));
 	}
 }

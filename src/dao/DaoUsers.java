@@ -10,13 +10,13 @@ public class DaoUsers {
 
 	public static String getUserByDni(String dni) {
 		String query = "SELECT * FROM USUARIO WHERE DNI = ?";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, dni);
-			try (ResultSet rs = ps.executeQuery()) {
-				if (rs.next()) {
-					User u = resultSetToUser(rs);
-					return u.toString();
+			preparedStatement.setString(1, dni);
+			try (ResultSet resultSet = preparedStatement.executeQuery()) {
+				if (resultSet.next()) {
+					User user = resultSetToUser(resultSet);
+					return user.toString();
 				}
 			}
 		} catch (SQLException e) {
@@ -25,66 +25,66 @@ public class DaoUsers {
 		return "No se encontró ningún usuario con el DNI: " + dni;
 	}
 
-	public static String createUser(User u) {
+	public static String createUser(User user) {
 		String query = "INSERT INTO USUARIO (DNI, NOMBRE, APELLIDO, EMAIL) VALUES (?, ?, ?, ?)";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, u.getDni());
-			ps.setString(2, u.getName());
-			ps.setString(3, u.getSurname());
-			ps.setString(4, u.getEmail());
+			preparedStatement.setString(1, user.getDni());
+			preparedStatement.setString(2, user.getName());
+			preparedStatement.setString(3, user.getSurname());
+			preparedStatement.setString(4, user.getEmail());
 
-			ps.executeUpdate();
-			Logger.writeLog("Usuario creado: " + u.getDni() + " (" + u.getName() + ")");
-			return "¡Usuario '" + u.getName() + "' creado con éxito!";
+			preparedStatement.executeUpdate();
+			Logger.writeLog("Usuario creado: " + user.getDni() + " (" + user.getName() + ")");
+			return "¡Usuario '" + user.getName() + "' creado con éxito!";
 		} catch (SQLException e) {
-			Logger.writeLog("ERROR al crear usuario " + u.getDni() + ": " + e.getMessage());
+			Logger.writeLog("ERROR al crear usuario " + user.getDni() + ": " + e.getMessage());
 			return "Error al crear usuario: " + e.getMessage();
 		}
 	}
 
 	public static String listUsers() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder stringBuilder = new StringBuilder();
 		String query = "SELECT * FROM USUARIO";
-		try (Connection con = DatabaseConnector.getConexion();
-				PreparedStatement ps = con.prepareStatement(query);
-				ResultSet rs = ps.executeQuery()) {
+		try (Connection connection = DatabaseConnector.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
 
-			while (rs.next()) {
-				sb.append(resultSetToUser(rs).toString()).append("\n");
+			while (resultSet.next()) {
+				stringBuilder.append(resultSetToUser(resultSet).toString()).append("\n");
 			}
 		} catch (SQLException e) {
 			Logger.writeLog("ERROR al listar usuarios: " + e.getMessage());
 			return "Error al listar usuarios.";
 		}
-		return sb.length() == 0 ? "No hay usuarios registrados." : sb.toString();
+		return stringBuilder.length() == 0 ? "No hay usuarios registrados." : stringBuilder.toString();
 	}
 
-	public static String updateUser(User u) {
+	public static String updateUser(User user) {
 		String query = "UPDATE USUARIO SET NOMBRE=?, APELLIDO=?, EMAIL=? WHERE DNI=?";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, u.getName());
-			ps.setString(2, u.getSurname());
-			ps.setString(3, u.getEmail());
-			ps.setString(4, u.getDni());
+			preparedStatement.setString(1, user.getName());
+			preparedStatement.setString(2, user.getSurname());
+			preparedStatement.setString(3, user.getEmail());
+			preparedStatement.setString(4, user.getDni());
 
-			if (ps.executeUpdate() > 0) {
-				Logger.writeLog("Usuario actualizado: " + u.getDni());
-				return "Datos de '" + u.getName() + "' actualizados correctamente.";
+			if (preparedStatement.executeUpdate() > 0) {
+				Logger.writeLog("Usuario actualizado: " + user.getDni());
+				return "Datos de '" + user.getName() + "' actualizados correctamente.";
 			}
 		} catch (SQLException e) {
-			Logger.writeLog("ERROR al actualizar usuario " + u.getDni() + ": " + e.getMessage());
+			Logger.writeLog("ERROR al actualizar usuario " + user.getDni() + ": " + e.getMessage());
 		}
 		return "Error: El usuario no existe o no se pudo actualizar.";
 	}
 
 	public static String deleteUser(String dni) {
 		String query = "DELETE FROM USUARIO WHERE DNI = ?";
-		try (Connection con = DatabaseConnector.getConexion(); PreparedStatement ps = con.prepareStatement(query)) {
+		try (Connection connection = DatabaseConnector.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-			ps.setString(1, dni);
-			if (ps.executeUpdate() > 0) {
+			preparedStatement.setString(1, dni);
+			if (preparedStatement.executeUpdate() > 0) {
 				Logger.writeLog("Usuario eliminado: " + dni);
 				return "El usuario con DNI: '" + dni + "' se ha eliminado correctamente.";
 			}
@@ -94,7 +94,7 @@ public class DaoUsers {
 		return "Error: No se encontró al usuario con el DNI '" + dni + "'.";
 	}
 
-	private static User resultSetToUser(ResultSet rs) throws SQLException {
-		return new User(rs.getString("DNI"), rs.getString("NOMBRE"), rs.getString("APELLIDO"), rs.getString("EMAIL"));
+	private static User resultSetToUser(ResultSet resultSet) throws SQLException {
+		return new User(resultSet.getString("DNI"), resultSet.getString("NOMBRE"), resultSet.getString("APELLIDO"), resultSet.getString("EMAIL"));
 	}
 }

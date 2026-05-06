@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,12 +39,13 @@ public class ViewGuestList extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 
 		JPanel header = new JPanel();
-		header.setBackground(new Color(53, 132, 228));
+		header.setBackground(new Color(0, 128, 255));
 		header.setPreferredSize(new Dimension(9, 50));
 		contentPane.add(header, BorderLayout.NORTH);
 		header.setLayout(null);
 
 		BTN_back = new JButton("←");
+		BTN_back.setHorizontalAlignment(SwingConstants.CENTER);
 		BTN_back.setBounds(10, 11, 75, 30);
 		BTN_back.setFont(new Font("Dialog", Font.BOLD, 20));
 		BTN_back.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
@@ -51,7 +53,8 @@ public class ViewGuestList extends JFrame {
 
 		JLabel guestTitle = new JLabel("Invitados");
 		guestTitle.setBounds(216, 11, 159, 30);
-		guestTitle.setFont(new Font("FreeMono", Font.BOLD, 30));
+		guestTitle.setFont(new Font("Alef", Font.BOLD, 30));
+		guestTitle.setForeground(Color.WHITE);
 		guestTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		header.add(guestTitle);
 
@@ -61,6 +64,10 @@ public class ViewGuestList extends JFrame {
 
 		listModel = new DefaultListModel<>();
 		guestList = new JList<>(listModel);
+		// Centrar texto de los elementos de la lista
+		DefaultListCellRenderer renderer = new DefaultListCellRenderer();
+		renderer.setHorizontalAlignment(SwingConstants.CENTER);
+		guestList.setCellRenderer(renderer);
 		JScrollPane scrollPane = new JScrollPane(guestList);
 		scrollPane.setPreferredSize(new Dimension(250, 300));
 		mainPanel.add(scrollPane);
@@ -71,20 +78,16 @@ public class ViewGuestList extends JFrame {
 		mainPanel.add(infoPanel);
 
 		guestName = new JLabel("Selecciona un invitado");
+		guestName.setHorizontalAlignment(SwingConstants.CENTER);
 		guestName.setPreferredSize(new Dimension(200, 15));
 		infoPanel.add(guestName);
 
 		guestEmail = new JLabel("");
+		guestEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		guestEmail.setPreferredSize(new Dimension(200, 15));
 		infoPanel.add(guestEmail);
 
-		JButton viewButton = new JButton("Ver Detalles");
-		viewButton.setPreferredSize(new Dimension(150, 25));
-		infoPanel.add(viewButton);
-
-		JButton editButton = new JButton("Editar");
-		editButton.setPreferredSize(new Dimension(150, 25));
-		infoPanel.add(editButton);
+		// Botones "Ver Detalles" y "Editar" eliminados porque no tenían funcionalidad asociada
 	}
 
 	public JButton getBTN_back() {

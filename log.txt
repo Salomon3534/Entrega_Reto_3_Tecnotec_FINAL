@@ -87,3 +87,137 @@
 [2026-05-05 22:46:20] ACCIÓN: Conexión establecida con éxito.
 [2026-05-05 22:46:23] ACCIÓN: Conexión establecida con éxito.
 [2026-05-05 22:46:26] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 08:28:16] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 08:28:19] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 08:29:26] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 08:29:31] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 12:32:06] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:32:15] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:34:19] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:34:50] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:34:53] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:34:53] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:34:58] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:15] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:20] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:22] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:24] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:24] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:27] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:29] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:29] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:35:30] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:39:47] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:39:51] ACCIÓN: Conexión cerrada.
+[2026-05-06 23:41:39] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:42:11] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:42:17] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:42:17] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:42:19] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:42:25] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:42:30] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:46:59] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:47:18] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:47:20] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:47:20] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:47:35] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:47:42] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:52:22] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:53:05] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:53:09] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:53:09] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:53:11] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:53:12] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:53:19] ACCIÓN: Conexión establecida con éxito.
+[2026-05-06 23:59:54] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:00:27] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:00:27] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:00:29] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:00:31] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:00:33] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:00:57] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:19] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:21] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:22] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:22] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:26] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:27] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:31] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:31] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:32] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:33] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:34] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:35] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:36] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:39] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:41] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:41] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:43] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:44] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:45] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:46] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:48] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:49] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:51] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:51] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:52] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:53] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:54] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:54] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:54] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:56] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:57] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:57] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:01:57] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:02:00] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:02:00] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:16] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:42] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:42] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:43] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:44] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:44] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:06:48] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:11:01] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:11:37] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:12:52] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:03] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:06] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:06] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:08] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:08] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:09] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:09] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:10] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:12] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:13:32] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:17:28] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:18:47] ACCIÓN: User logged in successfully: elena_ai
+[2026-05-07 00:18:51] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:18:51] ACCIÓN: Loaded all events: 7 events
+[2026-05-07 00:18:51] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:18:51] ACCIÓN: Loaded filtered events for user: elena_ai (3 events)
+[2026-05-07 00:18:51] ACCIÓN: Opening user registrations view for user: elena_ai
+[2026-05-07 00:18:51] ACCIÓN: Opening events view.
+[2026-05-07 00:18:53] ACCIÓN: Event detail updated: Taller Python Avanzado
+[2026-05-07 00:18:53] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:18:54] ACCIÓN: Opening detailed view for event: Taller Python Avanzado
+[2026-05-07 00:18:54] ACCIÓN: Event detail view opened: Taller Python Avanzado
+[2026-05-07 00:18:54] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:18:56] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:18:57] ACCIÓN: User unregistered from event: elena_ai -> Taller Python Avanzado
+[2026-05-07 00:18:57] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:19:25] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:19:35] ACCIÓN: User logged in successfully: elena_ai
+[2026-05-07 00:19:36] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:19:36] ACCIÓN: Loaded all events: 7 events
+[2026-05-07 00:19:36] ACCIÓN: Opening events view from start menu.
+[2026-05-07 00:19:36] ACCIÓN: Opening events view.
+[2026-05-07 00:19:38] ACCIÓN: Event detail updated: Blockchain y Futuro
+[2026-05-07 00:19:38] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:19:39] ACCIÓN: Opening detailed view for event: Blockchain y Futuro
+[2026-05-07 00:19:39] ACCIÓN: Event detail view opened: Blockchain y Futuro
+[2026-05-07 00:19:39] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:19:41] ACCIÓN: Conexión establecida con éxito.
+[2026-05-07 00:19:43] ACCIÓN: User registered in event: elena_ai -> Blockchain y Futuro
+[2026-05-07 00:19:43] ACCIÓN: Conexión establecida con éxito.

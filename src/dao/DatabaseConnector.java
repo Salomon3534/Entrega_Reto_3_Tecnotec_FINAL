@@ -6,23 +6,23 @@ import java.sql.SQLException;
 
 public class DatabaseConnector {
 
-	private static Connection conexion;
+	private static Connection connection;
 
 	private static final String URL = "jdbc:mysql://localhost:3306/euskalencounter";
 	private static final String USER = "root";
-	private static final String PASS = "1DAW3";
+	private static final String PASSWORD = "1DAW3";
 
-	public static Connection getConexion() throws SQLException {
-		if (conexion == null || conexion.isClosed()) {
-			conectar();
+	public static Connection getConnection() throws SQLException {
+		if (connection == null || connection.isClosed()) {
+			connect();
 		}
-		return conexion;
+		return connection;
 	}
 
-	public static void conectar() throws SQLException {
+	public static void connect() throws SQLException {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conexion = DriverManager.getConnection(URL, USER, PASS);
+			connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
 			Logger.writeLog("Conexión establecida con éxito.");
 
@@ -35,10 +35,10 @@ public class DatabaseConnector {
 		}
 	}
 
-	public static void cerrarConexion() {
+	public static void closeConnection() {
 		try {
-			if (conexion != null && !conexion.isClosed()) {
-				conexion.close();
+			if (connection != null && !connection.isClosed()) {
+				connection.close();
 				Logger.writeLog("Conexión cerrada.");
 			}
 		} catch (SQLException e) {

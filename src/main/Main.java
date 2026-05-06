@@ -3,15 +3,15 @@ package main;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import controller.ControllerStart;
+import controller.ControllerLogin;
 import dao.DatabaseConnector;
-import view.ViewStart;
+import view.ViewLogin;
 
 public class Main {
 
 	public static void main(String[] args) {
 		try {
-			Connection connection = DatabaseConnector.getConexion();
+			Connection connection = DatabaseConnector.getConnection();
 
 			if (connection == null || connection.isClosed()) {
 				throw new SQLException(
@@ -19,10 +19,10 @@ public class Main {
 			}
 
 			try {
-				ViewStart vistaPrincipal = new ViewStart();
-				ControllerStart control = new ControllerStart(vistaPrincipal);
+				ViewLogin viewLogin = new ViewLogin();
+				ControllerLogin controller = new ControllerLogin(viewLogin);
 
-				control.showStart();
+				controller.showLogin();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

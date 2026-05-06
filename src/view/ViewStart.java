@@ -18,74 +18,97 @@ import javax.swing.WindowConstants;
 
 public class ViewStart extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private final int FRAME_WIDTH = 444;
+	private static final long serialVersionUID = 1L;
+	private final int FRAME_WIDTH = 444;
 
-    private JButton BTN_show_encounters;
-    private JButton BTN_show_events;
-    private JButton BTN_show_guests;
+	private JButton BTN_show_encounters;
+	private JButton BTN_show_events;
+	// Keep both: 'Ver inscripciones' and 'Invitados'
+	private JButton BTN_show_registrations;
+	private JButton BTN_show_guests;
 
-    public ViewStart() {
-        initialize();
-    }
+	public ViewStart() {
+		initialize();
+	}
 
-    private void initialize() {
-        setTitle("Euskal Encounter (Menu de usuario)");
-        setResizable(false);
-        setBounds(100, 100, 460, 310);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
+	private void initialize() {
+		setTitle("Euskal Encounter (Menu de usuario)");
+		setResizable(false);
+		setBounds(100, 100, 460, 346);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		getContentPane().setLayout(null);
 
-        URL iconUrl = ViewStart.class.getResource("/assets/img_ee_icon.png");
-        if (iconUrl != null) {
-            setIconImage(Toolkit.getDefaultToolkit().getImage(iconUrl));
-        }
+		URL iconUrl = ViewStart.class.getResource("/assets/img_ee_icon.png");
+		if (iconUrl != null) {
+			setIconImage(Toolkit.getDefaultToolkit().getImage(iconUrl));
+		}
 
-        Box HBOX_TabTitleTop = Box.createHorizontalBox();
-        HBOX_TabTitleTop.setOpaque(true);
-        HBOX_TabTitleTop.setBounds(0, 0, FRAME_WIDTH, 50);
-        HBOX_TabTitleTop.setBackground(new Color(0, 128, 255));
-        getContentPane().add(HBOX_TabTitleTop);
+		Box HBOX_TabTitleTop = Box.createHorizontalBox();
+		HBOX_TabTitleTop.setOpaque(true);
+		HBOX_TabTitleTop.setBounds(0, 0, FRAME_WIDTH, 50);
+		HBOX_TabTitleTop.setBackground(new Color(0, 128, 255));
+		getContentPane().add(HBOX_TabTitleTop);
 
-        JLabel LBL_TabTitle = new JLabel("Menú principal de usuario");
-        LBL_TabTitle.setFont(new Font("Alef", Font.BOLD, 30));
-        LBL_TabTitle.setHorizontalAlignment(SwingConstants.CENTER);
-        LBL_TabTitle.setPreferredSize(new Dimension(FRAME_WIDTH, 50));
-        HBOX_TabTitleTop.add(LBL_TabTitle);
+		JLabel LBL_TabTitle = new JLabel("Menú principal de usuario");
+		LBL_TabTitle.setFont(new Font("Alef", Font.BOLD, 30));
+		LBL_TabTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		LBL_TabTitle.setPreferredSize(new Dimension(FRAME_WIDTH, 50));
+		HBOX_TabTitleTop.add(LBL_TabTitle);
 
-        JPanel PAN_lower_button_choices = new JPanel();
-        PAN_lower_button_choices.setOpaque(false);
-        PAN_lower_button_choices.setBounds(0, 211, FRAME_WIDTH, 50);
-        PAN_lower_button_choices.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		JPanel PAN_lower_button_choices = new JPanel();
+		PAN_lower_button_choices.setOpaque(false);
+		PAN_lower_button_choices.setBounds(0, 211, 444, 105);
+		PAN_lower_button_choices.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-        BTN_show_encounters = new JButton("Encuentros");
-        BTN_show_encounters.setPreferredSize(new Dimension(130, 35));
-        PAN_lower_button_choices.add(BTN_show_encounters);
+		BTN_show_encounters = new JButton("Encuentros");
+		BTN_show_encounters.setPreferredSize(new Dimension(130, 35));
+		BTN_show_encounters.setHorizontalAlignment(SwingConstants.CENTER);
+		PAN_lower_button_choices.add(BTN_show_encounters);
 
-        BTN_show_events = new JButton("Eventos");
-        BTN_show_events.setPreferredSize(new Dimension(130, 35));
-        PAN_lower_button_choices.add(BTN_show_events);
+		BTN_show_events = new JButton("Eventos");
+		BTN_show_events.setPreferredSize(new Dimension(130, 35));
+		BTN_show_events.setHorizontalAlignment(SwingConstants.CENTER);
+		PAN_lower_button_choices.add(BTN_show_events);
 
-        BTN_show_guests = new JButton("Invitados");
-        BTN_show_guests.setPreferredSize(new Dimension(130, 35));
-        PAN_lower_button_choices.add(BTN_show_guests);
+		BTN_show_registrations = new JButton("Ver inscripciones");
+		BTN_show_registrations.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		BTN_show_registrations.setPreferredSize(new Dimension(130, 35));
+		BTN_show_registrations.setHorizontalAlignment(SwingConstants.CENTER);
+		PAN_lower_button_choices.add(BTN_show_registrations);
 
-        getContentPane().add(PAN_lower_button_choices);
+		BTN_show_guests = new JButton("Invitados");
+		BTN_show_guests.setPreferredSize(new Dimension(130, 35));
+		BTN_show_guests.setHorizontalAlignment(SwingConstants.CENTER);
+		PAN_lower_button_choices.add(BTN_show_guests);
 
-        JLabel IMG_bg_start_splash = new JLabel("");
-        IMG_bg_start_splash.setBounds(0, 50, FRAME_WIDTH, 221);
+		getContentPane().add(PAN_lower_button_choices);
 
-        URL splashUrl = ViewStart.class.getResource("/assets/img_start_splash.jpg");
-        if (splashUrl != null) {
-            ImageIcon originalIcon = new ImageIcon(splashUrl);
-            Image scaledImage = originalIcon.getImage().getScaledInstance(FRAME_WIDTH, 221, Image.SCALE_SMOOTH);
-            IMG_bg_start_splash.setIcon(new ImageIcon(scaledImage));
-        }
+		JLabel IMG_bg_start_splash = new JLabel("");
+		IMG_bg_start_splash.setBounds(0, 50, 444, 266);
 
-        getContentPane().add(IMG_bg_start_splash);
-    }
+		URL splashUrl = ViewStart.class.getResource("/assets/img_start_splash.jpg");
+		if (splashUrl != null) {
+			ImageIcon originalIcon = new ImageIcon(splashUrl);
+			Image scaledImage = originalIcon.getImage().getScaledInstance(FRAME_WIDTH, 221, Image.SCALE_SMOOTH);
+			IMG_bg_start_splash.setIcon(new ImageIcon(scaledImage));
+		}
 
-    public JButton getBTN_show_encounters() { return BTN_show_encounters; }
-    public JButton getBTN_show_events() { return BTN_show_events; }
-    public JButton getBTN_show_guests() { return BTN_show_guests; }
+		getContentPane().add(IMG_bg_start_splash);
+	}
+
+	public JButton getBTN_show_encounters() {
+		return BTN_show_encounters;
+	}
+
+	public JButton getBTN_show_events() {
+		return BTN_show_events;
+	}
+
+	public JButton getBTN_show_registrations() {
+		return BTN_show_registrations;
+	}
+
+	public JButton getBTN_show_guests() {
+		return BTN_show_guests;
+	}
 }

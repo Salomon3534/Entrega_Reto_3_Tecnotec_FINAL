@@ -24,18 +24,18 @@ public class Logger {
 	}
 
 	public static String readLog() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("\n--- CONTENIDO DEL FICHERO LOG ---\n");
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("\n--- CONTENIDO DEL FICHERO LOG ---\n");
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
-				sb.append(line).append("\n");
+				stringBuilder.append(line).append("\n");
 			}
 		} catch (IOException e) {
-			sb.append("Error al leer el log o el archivo no existe.");
+			stringBuilder.append("Error al leer el log o el archivo no existe.");
 		}
 
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 }
