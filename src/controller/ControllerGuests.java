@@ -44,7 +44,7 @@ public class ControllerGuests {
 		for (Guest guest : guests) {
 			view.getListModel().addElement(guest);
 		}
-		Logger.writeLog("Guest list loaded: " + guests.size() + " guests displayed.");
+		Logger.writeLog("Lista de invitados cargada: " + guests.size() + " invitados mostrados.");
 	}
 
 	private void updateDetail() {
@@ -52,12 +52,12 @@ public class ControllerGuests {
 		if (selected != null) {
 			view.getGuestNameLabel().setText(selected.getName() + " " + selected.getSurnames());
 			view.getGuestEmailLabel().setText(selected.getEmail());
-			Logger.writeLog("Guest selected: " + selected.getUsername());
+			Logger.writeLog("Invitado seleccionado: " + selected.getUsername());
 		}
 	}
 
 	private void backToStart() {
-		Logger.writeLog("Returning to start menu from guest list.");
+		Logger.writeLog("Regresando al menú principal desde la lista de invitados.");
 		ViewStart viewStart = new ViewStart();
 		ControllerStart controllerStart = new ControllerStart(viewStart);
 		controllerStart.showStart();
@@ -65,12 +65,12 @@ public class ControllerGuests {
 	}
 
 	public void showGuestList() {
-		Logger.writeLog("Opening guest list view.");
+		Logger.writeLog("Abriendo vista de lista de invitados.");
 		this.view.setVisible(true);
 	}
 
 	public void closeGuestList() {
-		Logger.writeLog("Closing guest list view.");
+		Logger.writeLog("Cerrando vista de lista de invitados.");
 		this.view.dispose();
 	}
 }

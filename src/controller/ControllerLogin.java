@@ -42,7 +42,7 @@ public class ControllerLogin {
 		if (guest != null) {
 			SessionManager.getInstance().setActiveUser(guest);
 			view.clearMessage();
-			Logger.writeLog("Usuario iniciado sesión correctamente: " + username);
+			Logger.writeLog("Usuario inició sesión correctamente: " + username);
 			openMainMenu();
 		} else {
 			view.showMessage("Usuario o contraseña incorrectos.");

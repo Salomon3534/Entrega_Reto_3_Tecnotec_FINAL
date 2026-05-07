@@ -52,7 +52,7 @@ public class ControllerEncounters {
 		for (Encounter encounter : encounters) {
 			view.getListModel().addElement(encounter);
 		}
-		Logger.writeLog("Encounters list loaded: " + encounters.size() + " encounters displayed.");
+		Logger.writeLog("Lista de encuentros cargada: " + encounters.size() + " encuentros mostrados.");
 	}
 
 	private void updateDetail() {
@@ -60,7 +60,7 @@ public class ControllerEncounters {
 		if (selected != null) {
 			view.getEncounterNameLabel().setText(selected.getLocation());
 			view.getEncounterDatesLabel().setText(selected.getDateStart() + " al " + selected.getDateEnd());
-			Logger.writeLog("Encounter selected: Code " + selected.getCode() + " - " + selected.getLocation());
+			Logger.writeLog("Encuentro seleccionado: Código " + selected.getCode() + " - " + selected.getLocation());
 		}
 	}
 
@@ -68,13 +68,13 @@ public class ControllerEncounters {
 		ViewEvents viewEvents = new ViewEvents();
 		ControllerEvents controllerEvents = new ControllerEvents(viewEvents);
 		controllerEvents.setEncounterFilter(encounter.getCode());
-		Logger.writeLog("Viewing events for encounter: " + encounter.getLocation());
+		Logger.writeLog("Visualizando eventos del encuentro: " + encounter.getLocation());
 		controllerEvents.showEvents();
 		this.view.dispose();
 	}
 
 	private void backToStart() {
-		Logger.writeLog("Returning to start menu from encounters view.");
+		Logger.writeLog("Regresando al menú principal desde la vista de encuentros.");
 		ViewStart viewStart = new ViewStart();
 		new ControllerStart(viewStart);
 		viewStart.setVisible(true);
@@ -82,7 +82,7 @@ public class ControllerEncounters {
 	}
 
 	public void showEncounters() {
-		Logger.writeLog("Opening encounters view.");
+		Logger.writeLog("Abriendo vista de encuentros.");
 		this.view.setVisible(true);
 	}
 }

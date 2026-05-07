@@ -36,7 +36,8 @@ public class ControllerEvents {
 			if (selected != null) {
 				openEventDetail(selected);
 			} else {
-				JOptionPane.showMessageDialog(view, "Por favor selecciona un evento", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(view, "Por favor selecciona un evento", "Advertencia",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		});
 
@@ -45,7 +46,8 @@ public class ControllerEvents {
 			if (selected != null) {
 				registerToEvent(selected);
 			} else {
-				JOptionPane.showMessageDialog(view, "Por favor selecciona un evento", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(view, "Por favor selecciona un evento", "Advertencia",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		});
 
@@ -54,7 +56,8 @@ public class ControllerEvents {
 			if (selected != null) {
 				unregisterFromEvent(selected);
 			} else {
-				JOptionPane.showMessageDialog(view, "Por favor selecciona un evento", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(view, "Por favor selecciona un evento", "Advertencia",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		});
 
@@ -72,13 +75,15 @@ public class ControllerEvents {
 		List<Event> events;
 		if (userFilterUsername != null) {
 			events = DaoEvents.listEventsByUsername(userFilterUsername);
-			Logger.writeLog("Loaded filtered events for user: " + userFilterUsername + " (" + events.size() + " events)");
+			Logger.writeLog("Eventos filtrados cargados para el usuario: " + userFilterUsername + " (" + events.size()
+					+ " eventos)");
 		} else if (filterEncounterCode != null) {
 			events = DaoEvents.listEventsByEncounter(filterEncounterCode);
-			Logger.writeLog("Loaded events for encounter code: " + filterEncounterCode + " (" + events.size() + " events)");
+			Logger.writeLog(
+					"Eventos cargados del encuentro: " + filterEncounterCode + " (" + events.size() + " eventos)");
 		} else {
 			events = DaoEvents.listEventsAsList();
-			Logger.writeLog("Loaded all events: " + events.size() + " events");
+			Logger.writeLog("Todos los eventos cargados: " + events.size() + " eventos");
 		}
 
 		for (Event event : events) {
@@ -91,7 +96,7 @@ public class ControllerEvents {
 		if (selected != null) {
 			view.getEventNameLabel().setText(selected.getTitle());
 			view.getEventDescLabel().setText(selected.getLocation());
-			Logger.writeLog("Event detail updated: " + selected.getTitle());
+			Logger.writeLog("Detalle de evento actualizado: " + selected.getTitle());
 
 			String username = SessionManager.getInstance().getActiveUsername();
 			if (username != null) {
@@ -106,9 +111,9 @@ public class ControllerEvents {
 	}
 
 	private void openEventDetail(Event event) {
-		Logger.writeLog("Opening detailed view for event: " + event.getTitle());
+		Logger.writeLog("Abriendo vista detallada para el evento: " + event.getTitle());
 		ViewEventDetailed viewEventDetailed = new ViewEventDetailed();
-		ControllerEventDetailed controller = new ControllerEventDetailed(viewEventDetailed, event, this);
+		ControllerEventDetailed controller = new ControllerEventDetailed(viewEventDetailed, event);
 		viewEventDetailed.setVisible(true);
 	}
 
@@ -116,23 +121,27 @@ public class ControllerEvents {
 		String username = SessionManager.getInstance().getActiveUsername();
 		if (username == null) {
 			JOptionPane.showMessageDialog(view, "No hay usuario registrado", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("Registration attempt without active user.");
+			Logger.writeLog("Intento de inscripción sin usuario activo.");
 			return;
 		}
 
 		if (DaoEvents.isUserRegistered(event.getId(), username)) {
-			JOptionPane.showMessageDialog(view, "Ya estás inscrito en este evento", "Información", JOptionPane.INFORMATION_MESSAGE);
-			Logger.writeLog("User already registered in event: " + username + " -> Event ID: " + event.getId());
+			JOptionPane.showMessageDialog(view, "Ya estás inscrito en este evento", "Información",
+					JOptionPane.INFORMATION_MESSAGE);
+			Logger.writeLog("Usuario ya inscrito en el evento: " + username + " -> ID del evento: " + event.getId());
 			return;
 		}
 
 		if (DaoEvents.registerUserInEvent(event.getId(), username)) {
-			JOptionPane.showMessageDialog(view, "¡Inscripción realizada exitosamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			Logger.writeLog("User registered in event: " + username + " -> " + event.getTitle());
+			JOptionPane.showMessageDialog(view, "¡Inscripción realizada exitosamente!", "Éxito",
+					JOptionPane.INFORMATION_MESSAGE);
+			Logger.writeLog("Usuario inscrito en el evento: " + username + " -> " + event.getTitle());
 			updateDetail();
 		} else {
-			JOptionPane.showMessageDialog(view, "Error al inscribirse en el evento", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("ERROR: Failed to register user in event: " + username + " -> Event ID: " + event.getId());
+			JOptionPane.showMessageDialog(view, "Error al inscribirse en el evento", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			Logger.writeLog("ERROR: No se pudo inscribir al usuario en el evento: " + username + " -> ID del evento: "
+					+ event.getId());
 		}
 	}
 
@@ -140,28 +149,32 @@ public class ControllerEvents {
 		String username = SessionManager.getInstance().getActiveUsername();
 		if (username == null) {
 			JOptionPane.showMessageDialog(view, "No hay usuario registrado", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("Unregistration attempt without active user.");
+			Logger.writeLog("Intento de desinscripción sin usuario activo.");
 			return;
 		}
 
 		if (!DaoEvents.isUserRegistered(event.getId(), username)) {
-			JOptionPane.showMessageDialog(view, "No estás inscrito en este evento", "Información", JOptionPane.INFORMATION_MESSAGE);
-			Logger.writeLog("User not registered in event: " + username + " -> Event ID: " + event.getId());
+			JOptionPane.showMessageDialog(view, "No estás inscrito en este evento", "Información",
+					JOptionPane.INFORMATION_MESSAGE);
+			Logger.writeLog("Usuario no inscrito en el evento: " + username + " -> ID del evento: " + event.getId());
 			return;
 		}
 
 		if (DaoEvents.unregisterUserFromEvent(event.getId(), username)) {
-			JOptionPane.showMessageDialog(view, "¡Desinscripción realizada exitosamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			Logger.writeLog("User unregistered from event: " + username + " -> " + event.getTitle());
+			JOptionPane.showMessageDialog(view, "¡Desinscripción realizada exitosamente!", "Éxito",
+					JOptionPane.INFORMATION_MESSAGE);
+			Logger.writeLog("Usuario desinscrito del evento: " + username + " -> " + event.getTitle());
 			updateDetail();
 		} else {
-			JOptionPane.showMessageDialog(view, "Error al desinscribirse del evento", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("ERROR: Failed to unregister user from event: " + username + " -> Event ID: " + event.getId());
+			JOptionPane.showMessageDialog(view, "Error al desinscribirse del evento", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			Logger.writeLog("ERROR: No se pudo desuscribir al usuario del evento: " + username + " -> ID del evento: "
+					+ event.getId());
 		}
 	}
 
 	private void backToStart() {
-		Logger.writeLog("Returning to start menu from events view.");
+		Logger.writeLog("Regresando al menú principal desde la vista de eventos.");
 		ViewStart viewStart = new ViewStart();
 		new ControllerStart(viewStart);
 		viewStart.setVisible(true);
@@ -179,7 +192,7 @@ public class ControllerEvents {
 	}
 
 	public void showEvents() {
-		Logger.writeLog("Opening events view.");
+		Logger.writeLog("Abriendo vista de eventos.");
 		this.view.setVisible(true);
 	}
 }

@@ -83,7 +83,7 @@ public class DaoEvents {
 				return resultSet.next();
 			}
 		} catch (SQLException e) {
-			Logger.writeLog("Error al verificar inscripción: " + e.getMessage());
+		Logger.writeLog("Error al verificar inscripción: " + e.getMessage());
 		}
 		return false;
 	}
@@ -96,7 +96,7 @@ public class DaoEvents {
 			preparedStatement.setString(2, username);
 			return preparedStatement.executeUpdate() > 0;
 		} catch (SQLException e) {
-			Logger.writeLog("Error al registrar inscripción: " + e.getMessage());
+		Logger.writeLog("Error al registrar inscripción: " + e.getMessage());
 		}
 		return false;
 	}
@@ -109,7 +109,7 @@ public class DaoEvents {
 			preparedStatement.setString(2, username);
 			return preparedStatement.executeUpdate() > 0;
 		} catch (SQLException e) {
-			Logger.writeLog("Error al cancelar inscripción: " + e.getMessage());
+		Logger.writeLog("Error al cancelar inscripción: " + e.getMessage());
 		}
 		return false;
 	}

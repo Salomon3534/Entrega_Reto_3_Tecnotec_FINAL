@@ -17,12 +17,10 @@ public class ControllerEventDetailed implements ActionListener {
 
 	private ViewEventDetailed view;
 	private Event event;
-	private ControllerEvents parentController;
 
-	public ControllerEventDetailed(ViewEventDetailed view, Event event, ControllerEvents parentController) {
+	public ControllerEventDetailed(ViewEventDetailed view, Event event) {
 		this.view = view;
 		this.event = event;
-		this.parentController = parentController;
 
 		loadData();
 		updateButtonStates();
@@ -49,7 +47,7 @@ public class ControllerEventDetailed implements ActionListener {
 		} else {
 			view.getLblSpecificInfo().setText("Tipo: Evento General");
 		}
-		Logger.writeLog("Event detail view opened: " + event.getTitle());
+		Logger.writeLog("Vista detallada de evento abierta: " + event.getTitle());
 	}
 
 	private void updateButtonStates() {
@@ -67,7 +65,7 @@ public class ControllerEventDetailed implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == view.getBTN_back()) {
-			Logger.writeLog("Closing event detail view.");
+			Logger.writeLog("Cerrando vista detallada de evento.");
 			view.dispose();
 		} else if (e.getSource() == view.getBTN_action()) {
 			register();
@@ -80,17 +78,17 @@ public class ControllerEventDetailed implements ActionListener {
 		String username = SessionManager.getInstance().getActiveUsername();
 		if (username == null) {
 			JOptionPane.showMessageDialog(view, "No hay usuario registrado", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("Registration attempted without active user for event: " + event.getTitle());
+			Logger.writeLog("Intento de inscripción sin usuario activo para el evento: " + event.getTitle());
 			return;
 		}
 
 		if (DaoEvents.registerUserInEvent(event.getId(), username)) {
 			JOptionPane.showMessageDialog(view, "¡Inscripción realizada exitosamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			Logger.writeLog("User registered in event: " + username + " -> " + event.getTitle());
+			Logger.writeLog("Usuario inscrito en evento: " + username + " -> " + event.getTitle());
 			updateButtonStates();
 		} else {
 			JOptionPane.showMessageDialog(view, "Error al inscribirse en el evento", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("ERROR: Failed to register " + username + " in event: " + event.getTitle());
+			Logger.writeLog("ERROR: No se pudo inscribir " + username + " en el evento: " + event.getTitle());
 		}
 	}
 
@@ -98,17 +96,17 @@ public class ControllerEventDetailed implements ActionListener {
 		String username = SessionManager.getInstance().getActiveUsername();
 		if (username == null) {
 			JOptionPane.showMessageDialog(view, "No hay usuario registrado", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("Unregistration attempted without active user for event: " + event.getTitle());
+			Logger.writeLog("Intento de desinscripción sin usuario activo para el evento: " + event.getTitle());
 			return;
 		}
 
 		if (DaoEvents.unregisterUserFromEvent(event.getId(), username)) {
 			JOptionPane.showMessageDialog(view, "¡Desinscripción realizada exitosamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			Logger.writeLog("User unregistered from event: " + username + " -> " + event.getTitle());
+			Logger.writeLog("Usuario desinscrito del evento: " + username + " -> " + event.getTitle());
 			updateButtonStates();
 		} else {
 			JOptionPane.showMessageDialog(view, "Error al desinscribirse del evento", "Error", JOptionPane.ERROR_MESSAGE);
-			Logger.writeLog("ERROR: Failed to unregister " + username + " from event: " + event.getTitle());
+			Logger.writeLog("ERROR: No se pudo desuscribir " + username + " del evento: " + event.getTitle());
 		}
 	}
 }

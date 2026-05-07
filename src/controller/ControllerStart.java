@@ -33,7 +33,7 @@ public class ControllerStart {
 	private void openEvents() {
 		ViewEvents viewEvents = new ViewEvents();
 		ControllerEvents controllerEvents = new ControllerEvents(viewEvents);
-		Logger.writeLog("Opening events view from start menu.");
+		Logger.writeLog("Abriendo vista de eventos desde el menú principal.");
 		controllerEvents.showEvents();
 		this.view.dispose();
 	}
@@ -41,7 +41,7 @@ public class ControllerStart {
 	private void openEncounters() {
 		ViewEncounters viewEncounters = new ViewEncounters();
 		ControllerEncounters controllerEncounters = new ControllerEncounters(viewEncounters);
-		Logger.writeLog("Opening encounters view from start menu.");
+		Logger.writeLog("Abriendo vista de encuentros desde el menú principal.");
 		controllerEncounters.showEncounters();
 		this.view.dispose();
 	}
@@ -49,7 +49,7 @@ public class ControllerStart {
 	private void openGuests() {
 		ViewGuestList viewGuestList = new ViewGuestList();
 		ControllerGuests controllerGuests = new ControllerGuests(viewGuestList);
-		Logger.writeLog("Opening guest list view from start menu.");
+		Logger.writeLog("Abriendo vista de lista de invitados desde el menú principal.");
 		controllerGuests.showGuestList();
 		this.view.dispose();
 	}
@@ -60,19 +60,19 @@ public class ControllerStart {
 		ControllerEvents controllerEvents = new ControllerEvents(viewEvents);
 		if (username != null) {
 			controllerEvents.setUserFilter(username);
-			Logger.writeLog("Opening user registrations view for user: " + username);
+			Logger.writeLog("Abriendo vista de inscripciones de usuario para: " + username);
 		}
 		controllerEvents.showEvents();
 		this.view.dispose();
 	}
 
 	public void showStart() {
-		Logger.writeLog("Opening start menu view.");
+		Logger.writeLog("Abriendo vista del menú principal.");
 		this.view.setVisible(true);
 	}
 
 	public void closeStart() {
-		Logger.writeLog("Closing start menu view.");
+		Logger.writeLog("Cerrando vista del menú principal.");
 		this.view.dispose();
 	}
 }
